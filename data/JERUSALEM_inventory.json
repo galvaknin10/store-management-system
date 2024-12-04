@@ -1,0 +1,18 @@
+{
+  "P004": {
+    "id": "P004",
+    "name": "Monitor",
+    "category": "Electronics",
+    "price": 335.99,
+    "quantity": 20,
+    "branch": "Jerusalem"
+  },
+  "P003": {
+    "id": "P003",
+    "name": "Laptop",
+    "category": "Electronics",
+    "price": 1035.99,
+    "quantity": 15,
+    "branch": "Jerusalem"
+  }
+}

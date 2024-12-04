@@ -1,0 +1,30 @@
+{
+  "123456789": {
+    "fullName": "Alice Brown",
+    "idNumber": "123456789",
+    "phoneNumber": "050-1234567",
+    "type": "Eilat",
+    "branch": "New"
+  },
+  "444555666": {
+    "fullName": "Diana Pink",
+    "idNumber": "444555666",
+    "phoneNumber": "054-6549873",
+    "type": "Eilat",
+    "branch": "New"
+  },
+  "987654321": {
+    "fullName": "Bob Green",
+    "idNumber": "987654321",
+    "phoneNumber": "052-7654321",
+    "type": "Eilat",
+    "branch": "VIP"
+  },
+  "111222333": {
+    "fullName": "Charlie Blue",
+    "idNumber": "111222333",
+    "phoneNumber": "053-9876543",
+    "type": "Eilat",
+    "branch": "Regular"
+  }
+}

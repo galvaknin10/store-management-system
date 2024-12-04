@@ -1,0 +1,22 @@
+{
+  "EMP001": {
+    "fullName": "John Doe",
+    "idNumber": "123456789",
+    "phoneNumber": "050-1234567",
+    "accountNumber": "111111",
+    "branch": "Eilat",
+    "employeeId": "EMP001",
+    "role": "Manager",
+    "userName": "jdoe"
+  },
+  "EMP002": {
+    "fullName": "Jane Doe",
+    "idNumber": "223456789",
+    "phoneNumber": "052-7654321",
+    "accountNumber": "222222",
+    "branch": "Eilat",
+    "employeeId": "EMP002",
+    "role": "Sales Associate",
+    "userName": "jane.doe"
+  }
+}
