@@ -1,26 +1,13 @@
 package main;
 
-import server.InventoryManager;
-import server.CustomerManager;
-import server.UserCredentialsManager;
-import server.EmployeeManager;
-import models.Customer;
-import models.Employee;
-import models.Product;
-import models.UserCredentials;
+import model.credentials.*;
+import model.customer.*;
+import model.employee.*;
+import model.inventory.*;
+import model.report.*;
+import view.*;
 
 import java.util.Scanner;
-import com.google.gson.Gson;
-
-import client.HandleUserInteractions;
-import utils.CustomerFileHandler;
-import utils.EmployeeFileHandler;
-import utils.InventoryFileHandler;
-import utils.UserCredentialsFileHandler;
-
-import java.util.List;
-import java.util.Map;
-import java.util.HashMap;
 
 
 public class StoreManagementSystem {
@@ -33,6 +20,7 @@ public class StoreManagementSystem {
         EmployeeFileHandler.createDefaultEmployeesRepo();
         InventoryFileHandler.createDefaultInventoryRepo();
         UserCredentialsFileHandler.createDefaultCredentialsRepo();
+        ReportFileHandler.createDefaultReportsRepo();
 
         boolean running = true;
 
@@ -40,7 +28,6 @@ public class StoreManagementSystem {
             // Login Workflow
             String[] loginResult = HandleUserInteractions.userLogin(scanner);
             if (loginResult == null) {
-                System.out.println("Exiting the system. Goodbye!");
                 break; // Exit the program
             }
 
@@ -55,7 +42,6 @@ public class StoreManagementSystem {
                 } else {
                     break;
                 }
-
             } else if (role.equals("Branch_User")) {
                 boolean userDecison = HandleUserInteractions.userScreen(scanner, branch);
                 if (userDecison) {
@@ -63,13 +49,8 @@ public class StoreManagementSystem {
                 } else {
                     break;
                 }
-                
-            } else {
-                System.out.println("Unrecognized role. Exiting the system.");
-                break;
             }
         }
-
         scanner.close();
     }
 }
