@@ -1,6 +1,4 @@
-package controller;
-
-import model.credentials.*;
+package model.credentials;
 
 
 public class CredentialController {

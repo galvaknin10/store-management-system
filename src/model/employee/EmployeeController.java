@@ -1,5 +1,5 @@
-package controller;
-import model.employee.*;
+package model.employee;
+
 
 public class EmployeeController {
 

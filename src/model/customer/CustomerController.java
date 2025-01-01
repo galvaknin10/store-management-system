@@ -1,6 +1,5 @@
-package controller;
+package model.customer;
 
-import model.customer.*;
 
 public class CustomerController {
     public static void addCustomerToRepo(CustomerManager customerManager, Customer customer, String branch) {

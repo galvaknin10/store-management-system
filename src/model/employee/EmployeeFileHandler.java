@@ -14,20 +14,19 @@ import java.util.Map;
 public class EmployeeFileHandler {
 
     // Save a map of employees to the JSON file specific to a branch
-    public static void saveEmployeesToFile(Map<String, Employee> employees, String branch) {
+    protected static void saveEmployeesToFile(Map<String, Employee> employees, String branch) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String fileName = "data/" + branch + "_employees.json"; // Dynamically create the file name based on the branch
 
         try (FileWriter writer = new FileWriter(fileName)) {
             gson.toJson(employees, writer);
-            System.out.println("Employee successfully appended to the repository.");
         } catch (IOException e) {
             System.err.println("Error occurred while trying to append the employee to the repository.");
         }
     }
 
     // Load a map of employees from a JSON file specific to a branch
-    public static Map<String, Employee> loadEmployeesFromFile(String branch) {
+    protected static Map<String, Employee> loadEmployeesFromFile(String branch) {
         String fileName = "data/" + branch + "_employees.json"; // Dynamically create the file name based on the branch
         File file = new File(fileName);
 
@@ -55,15 +54,15 @@ public class EmployeeFileHandler {
 
         if (!eilatFile.exists()) {
             Map<String, Employee> eilatRepo = new HashMap<>();
-            eilatRepo.put("EMP001", new Employee("John Doe", "123456789", "050-1234567", "111111", "Eilat", "EMP001", "Manager", "jdoe"));
-            eilatRepo.put("EMP002", new Employee("Jane Doe", "223456789", "052-7654321", "222222", "Eilat", "EMP002", "Sales Associate", "jane.doe"));
+            eilatRepo.put("galUser1", new Employee("Gal Vaknin", "123456789", "050-1234567", "111111", "Eilat", "Manager", "galUser1"));
+            eilatRepo.put("danUser3", new Employee("Dan", "223456789", "052-7654321", "222222", "Eilat", "Cashier", "danUser3"));
             createJsonFile(eilatRepo, "data/EILAT_employees.json");
         }
 
         if (!jerusalemFile.exists()) {
             Map<String, Employee> jerusalemRepo = new HashMap<>();
-            jerusalemRepo.put("EMP005", new Employee("Eve Brown", "523456789", "055-3216549", "555555", "Jerusalem", "EMP005", "Manager", "ebrown"));
-            jerusalemRepo.put("EMP006", new Employee("Charlie Green", "623456789", "056-9517538", "666666", "Jerusalem", "EMP006", "Sales Associate", "cgreen"));
+            jerusalemRepo.put("rioUser2", new Employee("Rio", "523456789", "055-3216549", "555555", "Jerusalem", "Manager", "rioUser2"));
+            jerusalemRepo.put("davidUser4", new Employee("David", "623456789", "056-9517538", "666666", "Jerusalem", "Salesperson", "davidUser4"));
             createJsonFile(jerusalemRepo, "data/JERUSALEM_employees.json");
         }
     }

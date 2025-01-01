@@ -38,13 +38,13 @@ public class EmployeeManager {
     }
 
     // Add an employee
-    public void addEmployee(Employee employee) {
-        employees.put(employee.getEmployeeId(), employee);
+    protected void addEmployee(Employee employee) {
+        employees.put(employee.getUserName(), employee);
     }
 
     // Remove an employee by ID
-    public boolean removeEmployee(String employeeId) {
-        return employees.remove(employeeId) != null;
+    protected boolean removeEmployee(String userName) {
+        return employees.remove(userName) != null;
     }
 
     // Get all employees as a collection
@@ -52,13 +52,18 @@ public class EmployeeManager {
         return employees;
     }
 
-    public String getEmployeeUserName(String employeeId) {
-        Employee employe = employees.get(employeeId);
-        return employe.getUserName();
+    public Employee getEmployee(String userName) {
+        Employee employee = employees.get(userName);
+        return employee;
+    }
+
+
+    public boolean validateEmployeeId(String userName) {
+        return employees.containsKey(userName);
     }
 
     // Save employees back to the JSON file
-    public void saveEmployees(String branch) {
+    protected void saveEmployees(String branch) {
         EmployeeFileHandler.saveEmployeesToFile(employees, branch);
     }
 }

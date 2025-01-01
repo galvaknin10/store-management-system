@@ -35,12 +35,12 @@ public class CustomerManager {
     
 
     // Add a new customer to the map
-    public void addCustomer(Customer customer) {
+    protected void addCustomer(Customer customer) {
         customers.put(customer.getIdNumber(), customer);
     }
 
     // Remove a customer by their ID number
-    public boolean removeCustomer(String idNumber) {
+    protected boolean removeCustomer(String idNumber) {
         return customers.remove(idNumber) == null;
     }
 
@@ -54,8 +54,21 @@ public class CustomerManager {
         return customers.get(idNumber);
     }
 
+    public double getDiscountForType(String type) {
+        switch (type.toLowerCase()) {
+            case "vip":
+                return 0.20; // 20% discount
+            case "returning":
+                return 0.10; // 10% discount
+            case "new":
+                return 0.05; // 5% discount
+            default:
+                return 0.0;  // No discount
+        }
+    }
+
     // Save customers for the branch
-    public void saveCustomers(String branch) {
+    protected void saveCustomers(String branch) {
         CustomerFileHandler.saveCustomersToFile(customers, branch);
     }
 }

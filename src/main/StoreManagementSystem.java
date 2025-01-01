@@ -5,6 +5,7 @@ import model.customer.*;
 import model.employee.*;
 import model.inventory.*;
 import model.report.*;
+import model.log.*;
 import view.*;
 
 import java.util.Scanner;
@@ -21,6 +22,7 @@ public class StoreManagementSystem {
         InventoryFileHandler.createDefaultInventoryRepo();
         UserCredentialsFileHandler.createDefaultCredentialsRepo();
         ReportFileHandler.createDefaultReportsRepo();
+        LogFileHandler.createDefaultLogFile();
 
         boolean running = true;
 
@@ -35,15 +37,15 @@ public class StoreManagementSystem {
             String branch = loginResult[1];
 
             // Redirect to the appropriate screen
-            if (role.equals("Admin")) {
-                boolean userDecison = HandleUserInteractions.adminScreen(scanner); // Return true if user selects "Go Back"
+            if (role.equals("Manager")) {
+                boolean userDecison = HandleUserInteractions.ManagerScreen(scanner, branch); // Return true if user selects "Go Back"
                 if (userDecison) {
                     continue;
                 } else {
                     break;
                 }
-            } else if (role.equals("Branch_User")) {
-                boolean userDecison = HandleUserInteractions.userScreen(scanner, branch);
+            } else if (role.equals("Employee")) {
+                boolean userDecison = HandleUserInteractions.EmployeeScreen(scanner, branch);
                 if (userDecison) {
                     continue;
                 } else {

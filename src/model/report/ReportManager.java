@@ -1,8 +1,11 @@
 package model.report;
 
+import model.inventory.*;
 import java.util.HashMap;
 import java.util.Map;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class ReportManager {
     private static final Map<String, ReportManager> instances = new HashMap<>();
@@ -13,7 +16,7 @@ public class ReportManager {
         initializeBranch("JERUSALEM");
     }
     
-    private Map<Integer, Report> reports;
+    private Map<String, Report> reports;
     
     private ReportManager(String branch) {
         this.reports = ReportFileHandler.loadReportsFromFile(branch);
@@ -35,27 +38,36 @@ public class ReportManager {
     
 
     // Add a new report to the map
-    public void addReport(Report report) {
-        reports.put(report.getYear(), report);
+    protected void addReport(Report report) {
+        reports.put(report.getDay(), report);
     }
 
     // Remove a report by it's year
-    public boolean removeReport(int year) {
-        return reports.remove(year) == null;
+    protected boolean removeReport(String day) {
+        return reports.remove(day) == null;
     }
 
     // Retrieve all reports
-    public Map<Integer, Report> getAllReports() {
+    public Map<String, Report> getAllReports() {
         return reports;
     }
 
     // Find a report by it's year
-    public Report findReportByYear(int year) {
-        return reports.get(year);
+    public Report getReport(String day) {
+        return reports.get(day);
+    }
+
+    protected String getCurrentDay() {
+        // Get the current date
+        LocalDate currentDate = LocalDate.now();
+    
+        // Format the date as "d/M/yy"
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        return currentDate.format(formatter);
     }
 
     // Save report for the branch
-    public void saveReports(String branch) {
+    protected void saveReports(String branch) {
         ReportFileHandler.saveReportsToFile(reports, branch);
     }
 }

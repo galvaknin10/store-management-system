@@ -1,6 +1,4 @@
-package controller;
-
-import model.inventory.*;
+package model.inventory;
 
 
 public class InventoryController {

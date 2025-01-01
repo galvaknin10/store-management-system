@@ -1,11 +1,13 @@
 package model.credentials;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
 
 
 
-public class UserCredentialsManager {
+public class UserCredentialsManager extends UserCredentialsFileHandler {
 
     
     private static final Map<String, UserCredentialsManager> instances = new HashMap<>();
@@ -14,7 +16,6 @@ public class UserCredentialsManager {
         // Automatically create instances for predefined branches
         initializeBranch("EILAT");
         initializeBranch("JERUSALEM");
-        initializeBranch("ADMINS");
     }
 
     // Use a HashMap to store credentials, with the username as the key
@@ -49,14 +50,28 @@ public class UserCredentialsManager {
     }
     
     // Add new credentials
-    public void addCredentials(String username, String plainPassword, String branch) {
-        String passwordHash = UserCredentialsFileHandler.hashPassword(plainPassword);
+    protected void addCredentials(String username, String plainPassword, String branch) {
+        String passwordHash = hashPassword(plainPassword);
         credentials.put(username, new UserCredentials(username, passwordHash, branch));
-        System.out.println("User added successfully: " + username);
+    }
+
+    // Hash a password using SHA-256
+    protected static String hashPassword(String password) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            byte[] hashBytes = md.digest(password.getBytes());
+            StringBuilder hashString = new StringBuilder();
+            for (byte b : hashBytes) {
+                hashString.append(String.format("%02x", b));
+            }
+            return hashString.toString();
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException("Error hashing password: " + e.getMessage());
+        }
     }
 
     // Remove credentials by username
-    public boolean removeCredentials(String username) {
+    protected boolean removeCredentials(String username) {
         return credentials.remove(username) != null;
     }
 
@@ -67,7 +82,7 @@ public class UserCredentialsManager {
             return;
         }
         String branch = credentials.get(username).getBranch();
-        String newPasswordHash = UserCredentialsFileHandler.hashPassword(newPlainPassword);
+        String newPasswordHash = hashPassword(newPlainPassword);
         credentials.put(username, new UserCredentials(username, newPasswordHash, branch));
         System.out.println("Password updated successfully for user: " + username);
     }
@@ -78,7 +93,7 @@ public class UserCredentialsManager {
     }
 
     // Save credentials to file
-    public void saveCredentials(String branch) {
+    protected void saveCredentials(String branch) {
         UserCredentialsFileHandler.saveCredentialsToFile(credentials, branch);
     }
 
@@ -87,14 +102,13 @@ public class UserCredentialsManager {
         if (credentials.containsKey(userName)) {
             // Get the UserCredentials object and compare the stored password hash
             String storedPasswordHash = credentials.get(userName).getPasswordHash();
-            String providedPasswordHash = UserCredentialsFileHandler.hashPassword(password);
+            String providedPasswordHash = hashPassword(password);
             return storedPasswordHash.equals(providedPasswordHash);
         }
         return false;
     }
     
     
-
     public boolean isValidPassword(String password) {
         // Define password requirements
         if (password.length() < 8) {

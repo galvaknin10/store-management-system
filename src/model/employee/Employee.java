@@ -2,22 +2,20 @@ package model.employee;
 
 public class Employee {
     private String fullName;    
-    private String idNumber;   
+    private String id;   
     private String phoneNumber;
     private String accountNumber; 
     private String branch;   
-    private String employeeId; 
     private String role;       
     private String userName;
 
-    public Employee(String fullName, String idNumber, String phoneNumber, String accountNumber, 
-                    String branch, String employeeId, String role, String userName) {
+    public Employee(String fullName, String id, String phoneNumber, String accountNumber, 
+                    String branch, String role, String userName) {
         this.fullName = fullName;
-        this.idNumber = idNumber;
+        this.id = id;
         this.phoneNumber = phoneNumber;
         this.accountNumber = accountNumber;
         this.branch = branch;
-        this.employeeId = employeeId;
         this.role = role;
         this.userName = userName;
     }
@@ -26,8 +24,8 @@ public class Employee {
         return fullName;
     }
 
-    public String getIdNumber() {
-        return idNumber;
+    public String getId() {
+        return id;
     }
 
     public String getPhoneNumber() {
@@ -42,10 +40,6 @@ public class Employee {
         return branch;
     }
 
-    public String getEmployeeId() {
-        return employeeId;
-    }
-
     public String getRole() {
         return role;
     }
@@ -56,8 +50,8 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "Name: " + fullName + ", ID Number: " + idNumber + ", Phone: " + phoneNumber + ", Account Number" + accountNumber + 
-               ", Branch: " + branch + ", Employee Number: " + employeeId + ", Position: " + role + ", User Name In System: " + userName;
+        return "Name: " + fullName + ", ID Number: " + id + ", Phone: " + phoneNumber + ", Account Number" + accountNumber + 
+               ", Branch: " + branch + ", Position: " + role + ", User Name In System: " + userName;
     }
     
 }

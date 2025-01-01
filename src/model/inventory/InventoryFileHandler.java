@@ -14,20 +14,19 @@ import java.util.Map;
 public class InventoryFileHandler {
 
     // Save inventory to a JSON file specific to a branch
-    public static void saveInventoryToFile(Map<String, Product> inventory, String branch) {
+    protected static void saveInventoryToFile(Map<String, Product> inventory, String branch) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String fileName = "data/" + branch + "_inventory.json"; // Dynamically create the file name based on the branch
 
         try (FileWriter writer = new FileWriter(fileName)) {
             gson.toJson(inventory, writer);
-            System.out.println("Inventory successfully appended to the repository.");
         } catch (IOException e) {
             System.err.println("Error occurred while trying to append the inventory to the repository.");
         }
     }
 
     // Load inventory from a JSON file specific to a branch
-    public static Map<String, Product> loadInventoryFromFile(String branch) {
+    protected static Map<String, Product> loadInventoryFromFile(String branch) {
         String fileName = "data/" + branch + "_inventory.json"; // Dynamically create the file name based on the branch
         File file = new File(fileName);
 
@@ -54,15 +53,15 @@ public class InventoryFileHandler {
     
         if (!eilatFile.exists()) {
             Map<String, Product> eilatInventory = new HashMap<>();
-            eilatInventory.put("P001", new Product("P001", "Table", "Furniture", 120.0, 30, "Eilat"));
-            eilatInventory.put("P002", new Product("P002", "Chair", "Furniture", 45.0, 100, "Eilat"));
+            eilatInventory.put("P001", new Product("P001", "iPhone 14 Pro", 1099.99, 20, "Eilat"));
+            eilatInventory.put("P002", new Product("P002", "Samsung Galaxy S23", 899.99, 30, "Eilat"));
             createJsonFile(eilatInventory, "data/EILAT_inventory.json");
         }
     
         if (!jerusalemFile.exists()) {
             Map<String, Product> jerusalemInventory = new HashMap<>();
-            jerusalemInventory.put("P003", new Product("P003", "Laptop", "Electronics", 999.99, 15, "Jerusalem"));
-            jerusalemInventory.put("P004", new Product("P004", "Monitor", "Electronics", 299.99, 20, "Jerusalem"));
+            jerusalemInventory.put("P003", new Product("P003", "Google Pixel 8", 799.99, 25, "Jerusalem"));
+            jerusalemInventory.put("P004", new Product("P004", "OnePlus 11", 699.99, 15, "Jerusalem"));
             createJsonFile(jerusalemInventory, "data/JERUSALEM_inventory.json");
         }
     }

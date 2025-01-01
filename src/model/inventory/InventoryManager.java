@@ -38,30 +38,50 @@ public class InventoryManager {
         }
     }
     
-    public void addProduct(Product product) {
+    protected void addProduct(Product product) {
         inventory.put(product.getId(), product);
     }
 
-    public boolean removeProduct(String productId) {
+    protected boolean removeProduct(String productId) {
         // Remove the product and check if it was present
         return inventory.remove(productId) != null;
     }
     
-    public void sellProduct(String productId, int quantity) {
-        Product product = inventory.get(productId);
-        if (product != null && product.getQuantity() >= quantity) {
-            product.adjustQuantity(-quantity);
-        } else {
-            System.out.println("Insufficient stock or product not found!");
+    public void sellProducts(Map<String, Integer> cart, String branch) {
+        for (Map.Entry<String, Integer> entry : cart.entrySet()) {
+            String productId = entry.getKey();
+            int quantity = entry.getValue();
+    
+            Product product = inventory.get(productId);
+            if (product != null) {
+                if (product.getQuantity() > quantity) {
+                    product.adjustQuantity(quantity);
+                    saveInventory(branch); // Save changes to inventory
+                    System.out.println(quantity + " units of " + product.getName() + " sold.");
+                } else if (product.getQuantity() == quantity) {
+                    inventory.remove(productId); // Remove the product from the inventory
+                    saveInventory(branch);   // Save changes to inventory
+                    System.out.println(product.getName() + " sold out and removed from inventory.");
+                } else {
+                    System.out.println("Insufficient stock for " + product.getName() + " (Requested: " + quantity + ", Available: " + product.getQuantity() + ").");
+                }
+            } else {
+                System.out.println("Product with ID " + productId + " not found!");
+            }
         }
     }
+
+    public Product getProduct(String serialNum) {
+        return inventory.get(serialNum);
+    }
+    
 
     public Map<String, Product> getInventory() {
         return inventory;
     }
 
     // Save credentials back to the JSON file
-    public void saveInventory(String branch) {
+    protected void saveInventory(String branch) {
         InventoryFileHandler.saveInventoryToFile(inventory, branch);
     }
 }

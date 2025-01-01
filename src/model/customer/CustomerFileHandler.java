@@ -15,7 +15,7 @@ public class CustomerFileHandler {
 
 
     // Save customers to JSON file
-    public static void saveCustomersToFile(Map<String, Customer> customers, String branch) {
+    protected static void saveCustomersToFile(Map<String, Customer> customers, String branch) {
         String fileName = "data/" + branch + "_customers.json"; 
         Gson gson = new GsonBuilder().setPrettyPrinting().create(); // Dynamically create the file name based on the branch
     
@@ -28,7 +28,7 @@ public class CustomerFileHandler {
     }
 
 
-    public static Map<String, Customer> loadCustomersFromFile(String branch) {
+    protected static Map<String, Customer> loadCustomersFromFile(String branch) {
         String fileName = "data/" + branch + "_customers.json"; // File name for branch-specific customers
         File file = new File(fileName);
     
@@ -56,19 +56,19 @@ public class CustomerFileHandler {
 
         if (!eilatFile.exists()) {
             Map<String, Customer> eilatRepo = new HashMap<>();
-            eilatRepo.put("123456789", new Customer("Alice Brown", "123456789", "050-1234567", "Eilat", "New"));
-            eilatRepo.put("987654321", new Customer("Bob Green", "987654321", "052-7654321", "Eilat", "VIP"));
-            eilatRepo.put("111222333", new Customer("Charlie Blue", "111222333", "053-9876543", "Eilat", "Regular"));
-            eilatRepo.put("444555666", new Customer("Diana Pink", "444555666", "054-6549873", "Eilat", "New"));
+            eilatRepo.put("123456789", new Customer("Alice Brown", "123456789", "050-1234567", "New", "Eilat"));
+            eilatRepo.put("987654321", new Customer("Bob Green", "987654321", "052-7654321", "VIP", "Eilat"));
+            eilatRepo.put("111222333", new Customer("Charlie Blue", "111222333", "053-9876543", "Regular", "Eilat"));
+            eilatRepo.put("444555666", new Customer("Diana Pink", "444555666", "054-6549873", "New", "Eilat"));
             createJsonFile(eilatRepo, "data/EILAT_customers.json");
         }
 
         if (!jerusalemFile.exists()) {
             Map<String, Customer> jerusalemRepo = new HashMap<>();
-            jerusalemRepo.put("555666777", new Customer("Eve White", "555666777", "055-3216549", "Jerusalem", "VIP"));
-            jerusalemRepo.put("888999000", new Customer("Frank Black", "888999000", "056-9517538", "Jerusalem", "Regular"));
-            jerusalemRepo.put("123123123", new Customer("Grace Yellow", "123123123", "057-8529637", "Jerusalem", "New"));
-            jerusalemRepo.put("321321321", new Customer("Hank Orange", "321321321", "058-1478523", "Jerusalem", "VIP"));
+            jerusalemRepo.put("555666777", new Customer("Eve White", "555666777", "055-3216549", "New", "Jerusalem"));
+            jerusalemRepo.put("888999000", new Customer("Frank Black", "888999000", "056-9517538", "VIP", "Jerusalem"));
+            jerusalemRepo.put("123123123", new Customer("Grace Yellow", "123123123", "057-8529637", "VIP", "Jerusalem"));
+            jerusalemRepo.put("321321321", new Customer("Hank Orange", "321321321", "058-1478523", "Regular", "Jerusalem"));
             createJsonFile(jerusalemRepo, "data/JERUSALEM_customers.json");
         }
     }
