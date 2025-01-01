@@ -7,10 +7,10 @@ import java.util.Map;
 
 
 
-public class UserCredentialsManager extends UserCredentialsFileHandler {
+public class CredentialsManager {
 
     
-    private static final Map<String, UserCredentialsManager> instances = new HashMap<>();
+    private static final Map<String, CredentialsManager> instances = new HashMap<>();
 
     static {
         // Automatically create instances for predefined branches
@@ -19,21 +19,21 @@ public class UserCredentialsManager extends UserCredentialsFileHandler {
     }
 
     // Use a HashMap to store credentials, with the username as the key
-    private Map<String, UserCredentials> credentials;
+    private Map<String, Credentials> credentials;
 
     // Private constructor to prevent external instantiation
-    private UserCredentialsManager(String branch) {
-        this.credentials = UserCredentialsFileHandler.loadCredentialsFromFile(branch);
+    private CredentialsManager(String branch) {
+        this.credentials = CredentialsFileHandler.loadCredentialsFromFile(branch);
     }
 
     // Method to initialize instances for a specific branch
     private static void initializeBranch(String branch) {
-        UserCredentialsManager instance = new UserCredentialsManager(branch);
+        CredentialsManager instance = new CredentialsManager(branch);
         instances.put(branch, instance);
     }
 
     // Public method to get an instance for a specific branch
-    public static UserCredentialsManager getInstance(String branch) {
+    public static CredentialsManager getInstance(String branch) {
         if (instances.containsKey(branch)) {
             return instances.get(branch);
         } else {
@@ -51,23 +51,8 @@ public class UserCredentialsManager extends UserCredentialsFileHandler {
     
     // Add new credentials
     protected void addCredentials(String username, String plainPassword, String branch) {
-        String passwordHash = hashPassword(plainPassword);
-        credentials.put(username, new UserCredentials(username, passwordHash, branch));
-    }
-
-    // Hash a password using SHA-256
-    protected static String hashPassword(String password) {
-        try {
-            MessageDigest md = MessageDigest.getInstance("SHA-256");
-            byte[] hashBytes = md.digest(password.getBytes());
-            StringBuilder hashString = new StringBuilder();
-            for (byte b : hashBytes) {
-                hashString.append(String.format("%02x", b));
-            }
-            return hashString.toString();
-        } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException("Error hashing password: " + e.getMessage());
-        }
+        String passwordHash = CredentialsFileHandler.hashPassword(plainPassword);
+        credentials.put(username, new Credentials(username, passwordHash, branch));
     }
 
     // Remove credentials by username
@@ -82,19 +67,19 @@ public class UserCredentialsManager extends UserCredentialsFileHandler {
             return;
         }
         String branch = credentials.get(username).getBranch();
-        String newPasswordHash = hashPassword(newPlainPassword);
-        credentials.put(username, new UserCredentials(username, newPasswordHash, branch));
+        String newPasswordHash = CredentialsFileHandler.hashPassword(newPlainPassword);
+        credentials.put(username, new Credentials(username, newPasswordHash, branch));
         System.out.println("Password updated successfully for user: " + username);
     }
 
     // Get all credentials
-    public Map<String, UserCredentials> getAllCredentials() {
+    public Map<String, Credentials> getAllCredentials() {
         return new HashMap<>(credentials);
     }
 
     // Save credentials to file
     protected void saveCredentials(String branch) {
-        UserCredentialsFileHandler.saveCredentialsToFile(credentials, branch);
+        CredentialsFileHandler.saveCredentialsToFile(credentials, branch);
     }
 
     
@@ -102,7 +87,7 @@ public class UserCredentialsManager extends UserCredentialsFileHandler {
         if (credentials.containsKey(userName)) {
             // Get the UserCredentials object and compare the stored password hash
             String storedPasswordHash = credentials.get(userName).getPasswordHash();
-            String providedPasswordHash = hashPassword(password);
+            String providedPasswordHash = CredentialsFileHandler.hashPassword(password);
             return storedPasswordHash.equals(providedPasswordHash);
         }
         return false;

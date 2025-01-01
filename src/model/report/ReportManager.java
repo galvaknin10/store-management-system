@@ -1,6 +1,5 @@
 package model.report;
 
-import model.inventory.*;
 import java.util.HashMap;
 import java.util.Map;
 

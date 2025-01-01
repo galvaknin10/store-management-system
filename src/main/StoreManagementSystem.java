@@ -20,7 +20,7 @@ public class StoreManagementSystem {
         CustomerFileHandler.createDefaultCustomersRepo();
         EmployeeFileHandler.createDefaultEmployeesRepo();
         InventoryFileHandler.createDefaultInventoryRepo();
-        UserCredentialsFileHandler.createDefaultCredentialsRepo();
+        CredentialsFileHandler.createDefaultCredentialsRepo();
         ReportFileHandler.createDefaultReportsRepo();
         LogFileHandler.createDefaultLogFile();
 

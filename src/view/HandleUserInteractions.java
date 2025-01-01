@@ -23,7 +23,7 @@ public class HandleUserInteractions {
     static LogManager logManager = LogManager.getInstance();
 
     public static String[] userLogin(Scanner scanner) {
-        UserCredentialsManager credentialsManager = null;
+        CredentialsManager credentialsManager = null;
         EmployeeManager employeeManager = null;
         System.out.println("Welcome to the Store Management System!");
     
@@ -48,7 +48,7 @@ public class HandleUserInteractions {
                         }
     
                         try {
-                            credentialsManager = UserCredentialsManager.getInstance(branch);
+                            credentialsManager = CredentialsManager.getInstance(branch);
                             employeeManager = EmployeeManager.getInstance(branch);
                         } catch (NullPointerException e) {
                             System.out.println("Error: Unable to load branch information. Please contact support.");
@@ -73,7 +73,7 @@ public class HandleUserInteractions {
                         }
     
                         try {
-                            credentialsManager = UserCredentialsManager.getInstance(branch);
+                            credentialsManager = CredentialsManager.getInstance(branch);
                             employeeManager = EmployeeManager.getInstance(branch);
                         } catch (NullPointerException e) {
                             System.out.println("Error: Unable to load branch information. Please contact support.");
@@ -114,7 +114,7 @@ public class HandleUserInteractions {
 
     public static boolean ManagerScreen(Scanner scanner, String branch) {
         EmployeeManager employeeManagers = null;
-        UserCredentialsManager credentialsManager = null;
+        CredentialsManager credentialsManager = null;
         InventoryManager inventoryManagers = null;
         CustomerManager customerManagers = null;
         ReportManager reportManager = null;
@@ -155,7 +155,7 @@ public class HandleUserInteractions {
                                         continue;
                                     }
     
-                                    credentialsManager = UserCredentialsManager.getInstance(userBranch);
+                                    credentialsManager = CredentialsManager.getInstance(userBranch);
                                     if (credentialsManager == null) {
                                         System.out.println("Error: Unable to load user credentials for the branch.");
                                         continue;
@@ -190,7 +190,7 @@ public class HandleUserInteractions {
                         }
     
                         employeeManagers = EmployeeManager.getInstance(userBranch);
-                        credentialsManager = UserCredentialsManager.getInstance(userBranch);
+                        credentialsManager = CredentialsManager.getInstance(userBranch);
                         if (employeeManagers == null || credentialsManager == null) {
                             System.out.println("Error: Unable to load resources for employee management.");
                             continue;
@@ -525,7 +525,7 @@ public class HandleUserInteractions {
         return userBranch;
     }
 
-    private static String registerNewAccount(Scanner scanner, UserCredentialsManager credentialManager, String branch) {
+    private static String registerNewAccount(Scanner scanner, CredentialsManager credentialManager, String branch) {
         String userName;
     
         // Username validation
@@ -573,7 +573,7 @@ public class HandleUserInteractions {
         return userName;
     }
     
-    private static String authenticateUser(Scanner scanner, UserCredentialsManager credentialManager, boolean isManagerLogin, EmployeeManager employeeManager) {
+    private static String authenticateUser(Scanner scanner, CredentialsManager credentialManager, boolean isManagerLogin, EmployeeManager employeeManager) {
     String[] userInfo = getUserInfo(scanner);
     int tries = 3;
 
@@ -816,7 +816,7 @@ public class HandleUserInteractions {
         }
     }
     
-    public static void manageEmployees(UserCredentialsManager credentialsManager, EmployeeManager employeeManager, String branch, Scanner scanner) {
+    public static void manageEmployees(CredentialsManager credentialsManager, EmployeeManager employeeManager, String branch, Scanner scanner) {
         System.out.println("\nEmployee Management:");
         System.out.println("1. Remove Employee");
         System.out.println("2. View Employees");
@@ -839,7 +839,7 @@ public class HandleUserInteractions {
         }
     }
     
-    private static void removeEmployee(Scanner scanner, EmployeeManager employeeManager, UserCredentialsManager credentialsManager, String branch) {
+    private static void removeEmployee(Scanner scanner, EmployeeManager employeeManager, CredentialsManager credentialsManager, String branch) {
         System.out.print("Enter the username of the employee to remove: ");
         String userName = scanner.nextLine().trim();
     

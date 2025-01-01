@@ -1,12 +1,12 @@
 package model.credentials;
 
 
-public class UserCredentials {
+public class Credentials {
     private String username;    // Username for login
     private String passwordHash; // Hashed password for security
     private String branch;
 
-    public UserCredentials(String username, String passwordHash, String branch) {
+    public Credentials(String username, String passwordHash, String branch) {
         this.username = username;
         this.passwordHash = passwordHash;
         this.branch = branch;
