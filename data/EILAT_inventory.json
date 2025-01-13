@@ -1,0 +1,28 @@
+{
+  "P002": {
+    "name": "Samsung Galaxy S23",
+    "price": 935.99,
+    "quantity": 30,
+    "branch": "Eilat"
+  },
+  "P001": {
+    "name": "iPhone 14 Pro",
+    "price": 1135.99,
+    "quantity": 18,
+    "branch": "Eilat"
+  },
+  "P009": {
+    "serialNum": "P009",
+    "name": "iPhone 16",
+    "price": 836.0,
+    "quantity": 26,
+    "branch": "EILAT"
+  },
+  "P0010": {
+    "serialNum": "P0010",
+    "name": "iPhone 13",
+    "price": 236.0,
+    "quantity": 50,
+    "branch": "EILAT"
+  }
+}

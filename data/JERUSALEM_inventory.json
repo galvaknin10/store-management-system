@@ -1,0 +1,16 @@
+{
+  "P003": {
+    "id": "P003",
+    "name": "Google Pixel 8",
+    "price": 835.99,
+    "quantity": 25,
+    "branch": "Jerusalem"
+  },
+  "P004": {
+    "id": "P004",
+    "name": "OnePlus 11",
+    "price": 735.99,
+    "quantity": 15,
+    "branch": "Jerusalem"
+  }
+}

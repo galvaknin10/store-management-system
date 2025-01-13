@@ -1,0 +1,36 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch Server",
+            "request": "launch",
+            "mainClass": "server.Server",
+            "console": "integratedTerminal",
+            "args": "--enable-preview"
+        },
+        {
+            "type": "java",
+            "name": "Launch Client 1",
+            "request": "launch",
+            "mainClass": "client.Client",
+            "console": "integratedTerminal",
+            "args": "--enable-preview"
+        },
+        {
+            "type": "java",
+            "name": "Launch Client 2",
+            "request": "launch",
+            "mainClass": "client.Client",
+            "console": "integratedTerminal",
+            "args": "--enable-preview"
+        }
+    ],
+    "compounds": [
+        {
+            "name": "Run Server and Clients",
+            "configurations": ["Launch Server", "Launch Client 1", "Launch Client 2"]
+        }
+    ]
+}
+

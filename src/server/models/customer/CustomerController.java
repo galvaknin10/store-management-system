@@ -1,0 +1,28 @@
+package server.models.customer;
+
+import server.models.log.LogController;
+
+
+public class CustomerController {
+
+    public static boolean addCustomer(String branch, String customerId, String name, String phoneNumber, String type) {
+        CustomerManager customerManager = CustomerManager.getInstance(branch);
+        Customer customer = new Customer(name, phoneNumber, phoneNumber, type, branch);
+        boolean isAdded = customerManager.addCustomer(customer,branch);
+        if (isAdded) {
+            LogController.logCustomerCreation(branch, customerId);
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean removeCustomer(String branch, String customerId) {
+        CustomerManager customerManager = CustomerManager.getInstance(branch);
+        boolean isRemoved = customerManager.removeCustomer(customerId, branch);
+        if (isRemoved) {
+            LogController.logCustomerRemoval(branch, customerId);
+            return true;
+        }
+        return false;
+    }
+}

@@ -1,0 +1,104 @@
+[
+  {
+    "timestamp": "2025-01-06T15:28:34.376189",
+    "action": "Initiate Action",
+    "details": "log file initiated",
+    "branch": "EILAT"
+  },
+  {
+    "timestamp": "2025-01-07T11:36:55.839586100",
+    "action": "Sell Product",
+    "details": "Product sold: iPhone 14 Pro, Quantity: 2",
+    "branch": "EILAT"
+  },
+  {
+    "timestamp": "2025-01-08T20:34:11.308546",
+    "action": "Sell Product",
+    "details": "Product sold: iPhone 16, Quantity: 4",
+    "branch": "EILAT"
+  },
+  {
+    "timestamp": "2025-01-11T12:07:05.912402800",
+    "action": "Create User Name",
+    "details": "User Name created: adiUser6",
+    "branch": "EILAT"
+  },
+  {
+    "timestamp": "2025-01-11T12:07:43.465225",
+    "action": "Create Employee",
+    "details": "Employee created: 234562443",
+    "branch": "EILAT"
+  },
+  {
+    "timestamp": "2025-01-11T12:18:18.393319",
+    "action": "Create User Name",
+    "details": "User Name created: adiUser9",
+    "branch": "EILAT"
+  },
+  {
+    "timestamp": "2025-01-11T12:18:38.779181100",
+    "action": "Create Employee",
+    "details": "Employee created: 23521212",
+    "branch": "EILAT"
+  },
+  {
+    "timestamp": "2025-01-11T12:23:34.523940300",
+    "action": "Create User Name",
+    "details": "User Name created: adiUser9",
+    "branch": "EILAT"
+  },
+  {
+    "timestamp": "2025-01-11T12:24:05.934871700",
+    "action": "Create Employee",
+    "details": "Employee created: 23525322",
+    "branch": "EILAT"
+  },
+  {
+    "timestamp": "2025-01-11T12:27:11.013512300",
+    "action": "Create User Name",
+    "details": "User Name created: adiUser9",
+    "branch": "EILAT"
+  },
+  {
+    "timestamp": "2025-01-11T12:27:30.661572100",
+    "action": "Create Employee",
+    "details": "Employee created: 4353532",
+    "branch": "EILAT"
+  },
+  {
+    "timestamp": "2025-01-11T12:39:45.394094",
+    "action": "Create User Name",
+    "details": "User Name created: adiUser9",
+    "branch": "EILAT"
+  },
+  {
+    "timestamp": "2025-01-11T12:40:07.789163400",
+    "action": "Create Employee",
+    "details": "Employee created: 43636332",
+    "branch": "EILAT"
+  },
+  {
+    "timestamp": "2025-01-11T12:48:12.990012100",
+    "action": "Create User Name",
+    "details": "User Name created: adiUser9",
+    "branch": "EILAT"
+  },
+  {
+    "timestamp": "2025-01-11T12:48:58.812114500",
+    "action": "Create Employee",
+    "details": "Employee created: 4354342",
+    "branch": "EILAT"
+  },
+  {
+    "timestamp": "2025-01-11T12:56:07.835117700",
+    "action": "Create User Name",
+    "details": "User Name created: adiUser9",
+    "branch": "EILAT"
+  },
+  {
+    "timestamp": "2025-01-11T12:56:30.115446400",
+    "action": "Create Employee",
+    "details": "Employee created: 32522",
+    "branch": "EILAT"
+  }
+]

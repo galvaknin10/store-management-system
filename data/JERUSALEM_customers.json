@@ -1,0 +1,30 @@
+{
+  "555666777": {
+    "fullName": "Eve White",
+    "idNumber": "555666777",
+    "phoneNumber": "055-3216549",
+    "type": "New",
+    "branch": "Jerusalem"
+  },
+  "888999000": {
+    "fullName": "Frank Black",
+    "idNumber": "888999000",
+    "phoneNumber": "056-9517538",
+    "type": "VIP",
+    "branch": "Jerusalem"
+  },
+  "123123123": {
+    "fullName": "Grace Yellow",
+    "idNumber": "123123123",
+    "phoneNumber": "057-8529637",
+    "type": "VIP",
+    "branch": "Jerusalem"
+  },
+  "321321321": {
+    "fullName": "Hank Orange",
+    "idNumber": "321321321",
+    "phoneNumber": "058-1478523",
+    "type": "Returning",
+    "branch": "Jerusalem"
+  }
+}

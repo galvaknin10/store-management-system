@@ -1,0 +1,20 @@
+{
+  "rioUser2": {
+    "fullName": "Rio",
+    "id": "523456789",
+    "phoneNumber": "055-3216549",
+    "accountNumber": "555555",
+    "branch": "Jerusalem",
+    "role": "Manager",
+    "userName": "rioUser2"
+  },
+  "davidUser4": {
+    "fullName": "David",
+    "id": "623456789",
+    "phoneNumber": "056-9517538",
+    "accountNumber": "666666",
+    "branch": "Jerusalem",
+    "role": "Salesperson",
+    "userName": "davidUser4"
+  }
+}
