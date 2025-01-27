@@ -2,26 +2,26 @@ package server.models.customer;
 
 
 public class Customer {
-    private String fullName;    
-    private String idNumber;   
+    private String name;    
+    private String id;   
     private String phoneNumber;
     private String type;      
     private String branch;
     
-    public Customer(String fullName, String idNumber, String phoneNumber, String type, String branch) {
-        this.fullName = fullName;
-        this.idNumber = idNumber;
+    public Customer(String name, String id, String phoneNumber, String type, String branch) {
+        this.name = name;
+        this.id = id;
         this.phoneNumber = phoneNumber;
         this.type = type;
         this.branch = branch;
     }
 
-    public String getFullName() {
-        return fullName;
+    public String name() {
+        return name;
     }
 
     public String getIdNumber() {
-        return idNumber;
+        return id;
     }
 
     public String getPhoneNumber() {
@@ -34,7 +34,7 @@ public class Customer {
 
     @Override
     public String toString() {
-        return "Name: " + fullName + ", ID Number: " + idNumber + ", Phone: " + phoneNumber + ", Type: " + type + ", Branch: " + branch;
+        return "Name: " + name + ", ID Number: " + id + ", Phone: " + phoneNumber + ", Type: " + type + ", Branch: " + branch;
     }
 }
 

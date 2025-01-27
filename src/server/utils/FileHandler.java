@@ -27,7 +27,7 @@ public class FileHandler {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         try (FileWriter writer = new FileWriter(filePath)) {
             gson.toJson(data, writer);
-            System.out.println("File created successfully: " + filePath);
+            //System.out.println("File created successfully: " + filePath);
         } catch (IOException e) {
             System.err.println("Error creating JSON file '" + filePath + "': " + e.getMessage());
         }

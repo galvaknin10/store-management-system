@@ -13,9 +13,9 @@ public class InventoryController {
         return false;
     }
 
-    public static boolean removeProduct(String branch, String SerialNum) {
+    public static boolean removeProduct(String branch, String SerialNum, int quantity) {
         InventoryManager inventoryManager = InventoryManager.getInstance(branch);
-        boolean isRemoved = inventoryManager.removeProduct(SerialNum, branch);
+        boolean isRemoved = inventoryManager.removeProduct(SerialNum, branch, quantity);
         if (isRemoved) {
             return true;
         }

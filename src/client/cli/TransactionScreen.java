@@ -1,10 +1,11 @@
 package client.cli;
 
-import client.RequestSender;
 import shared.Request;
 import shared.Response;
 
 import java.util.*;
+
+import client.utils.RequestSender;
 
 public class TransactionScreen {
 
@@ -25,10 +26,8 @@ public class TransactionScreen {
                 scanner.nextLine();
                 switch (choice) {
                     case 1 -> viewInventory(scanner, sender, branch, cart);
-                    case 2 -> totalSum = viewCart(cart, sender, branch);
-                    case 3 -> {
-                        checkout(scanner, sender, branch, cart, totalSum);
-                        return;}
+                    case 2 -> viewCart(cart, sender, branch);
+                    case 3 -> checkout(scanner, sender, branch, cart);
                     case 4 -> {
                         System.out.println("Returning to the main menu...");
                         return;
@@ -92,42 +91,44 @@ public class TransactionScreen {
 
 
 
-    private static double viewCart(Map<String, Integer> cart, RequestSender sender, String branch) {
+    private static void viewCart(Map<String, Integer> cart, RequestSender sender, String branch) {
         if (cart.isEmpty()) {
             System.out.println("\n--- Cart is empty ---");
             System.out.println("Loading transaction menu...");
-            return 0.0;
+            return;
         }
 
-        double totalSum = 0;
+        double productTotalSum = 0;
         System.out.println("\n--- Cart ---\n");
         for (Map.Entry<String, Integer> entry : cart.entrySet()) {
             String serialNum = entry.getKey();
             int quantity = entry.getValue();
-            System.out.println(serialNum);
-            System.out.println(quantity);
+            System.out.println("\n" + "Serial Number: " + serialNum);
+
             Request request = new Request("GET_PRODUCT_DETAILS", new Object[]{branch, serialNum});
             Response response = sender.sendRequest(request);
+
             if (response.isSuccessful()) {
                 System.out.println(response.getMessage());
                 Map<String, Object> product = (Map<String, Object>) response.getData();
                 double price = (double) product.get("price");
-                totalSum += price * quantity;
+                productTotalSum += price * quantity;
 
                 System.out.println(product.get("name"));
-                System.out.println("Price: " + product.get("price"));
-                System.out.println("Quantity: " + ((Number) product.get("quantity")).intValue());
+                System.out.println("Price: " + product.get("price") + "$");
+                System.out.println("Pieces: " + quantity);
                 System.out.println("--------------------------");
-                System.out.println("\n--- TOTAL -> " + totalSum + "$");
+                System.out.println("\n--- TOTAL FOR THIS PRODUCT-> " + String.format("%.2f", productTotalSum) + "$");
             } else {
                 System.out.println(response.getMessage());
+                return;
             }
-
         }
-        return totalSum;
+        double cartTotal = calculateTotal(cart, sender, branch);
+        System.out.println("\n--- TOTAL FOR THIS CART-> " + String.format("%.2f", cartTotal) + "$\n");
     }
 
-    private static void checkout(Scanner scanner, RequestSender sender, String branch, Map<String, Integer> cart, double totalSum) {
+    private static void checkout(Scanner scanner, RequestSender sender, String branch, Map<String, Integer> cart) {
         if (cart.isEmpty()) {
             System.out.println("Cart is empty. Add products before checking out.");
             System.out.println("Loading transaction menu...");
@@ -148,15 +149,19 @@ public class TransactionScreen {
                 return;
             }
         }
-    
-        Request discountRequest = new Request("CALCULATE_DISCOUNT", new Object[]{branch, customerId, totalSum});
+
+        double cartTotal = calculateTotal(cart, sender, branch);
+
+        Request discountRequest = new Request("CALCULATE_DISCOUNT", new Object[]{branch, customerId, cartTotal});
         Response discountResponse = sender.sendRequest(discountRequest);
+
         if (discountResponse.isSuccessful()) {
             Object[] discountInfo = (Object[]) discountResponse.getData();
+
             System.out.println(discountResponse.getMessage());
             System.out.println("Customer Type: " + discountInfo[0]);
             System.out.println("Discount Applied: " + (double) discountInfo[1] * 100 + "%");
-            System.out.println("Total After Discount: " + discountInfo[2] + "$");
+            System.out.println("Total After Discount: " + String.format("%.2f", discountInfo[2]) + "$");
 
             while (true) {
                 try {
@@ -171,6 +176,7 @@ public class TransactionScreen {
                         case 1 -> {
                             Request checkOutRequest = new Request("CHECKOUT", new Object[]{branch, cart});
                             Response checkOutResponse = sender.sendRequest(checkOutRequest);
+
                             if (checkOutResponse.isSuccessful()) {
                                 System.out.println(checkOutResponse.getMessage());
                                 return;
@@ -194,5 +200,25 @@ public class TransactionScreen {
             System.out.println("Error: " + discountResponse.getMessage());
         }
     }  
+
+    private static double calculateTotal(Map<String, Integer> cart, RequestSender sender, String branch) {
+        double totalSum = 0;
+
+        for (Map.Entry<String, Integer> entry : cart.entrySet()) {
+            String serialNum = entry.getKey();
+            int quantity = entry.getValue();
+
+            Request request = new Request("GET_PRODUCT_DETAILS", new Object[]{branch, serialNum});
+            Response response = sender.sendRequest(request);
+
+            if (response.isSuccessful()) {
+                System.out.println(response.getMessage());
+                Map<String, Object> product = (Map<String, Object>) response.getData();
+                double price = (double) product.get("price");
+                totalSum += price * quantity;
+            }
+        }
+        return totalSum;
+    }
 }
 

@@ -1,14 +1,16 @@
 package client.cli;
 
-import client.RequestSender;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
+import client.utils.RequestSender;
 
 
 public class LoginScreen {
 
     public static String[] userLogin(Scanner scanner, RequestSender sender) {
-        System.out.println("\n--- Welcome to the Store Management System ---");
+        System.out.println("\n--- Welcome to the SmartTech Store Management System ---");
+        System.out.println("\n --- Login ---");
         while (true) {
             try {
                 System.out.println("Please select your role:");
@@ -32,6 +34,8 @@ public class LoginScreen {
                         if (result == 1) {
                             continue;
                         } else if (result == 2) {
+                            ScreensUtils.logOut(sender, null);
+                            System.out.println("Exiting the system, goodbye :)");
                             return null;
                         } else {
                             return new String[]{"Manager", branch, verdict[1]};
@@ -49,13 +53,16 @@ public class LoginScreen {
                         if (result == 1) {
                             continue;
                         } else if (result == 2) {
+                            ScreensUtils.logOut(sender, null);
+                            System.out.println("Exiting the system, goodbye :)");
                             return null;
                         } else {
                             return new String[]{"Employee", branch, verdict[1]};
                         }
                     }
                     case 3 -> {
-                        System.out.println("Exiting the system. Goodbye!");
+                        ScreensUtils.logOut(sender, null);
+                        System.out.println("Exiting the system, goodbye :)");
                         return null;
                     }
                     default -> System.out.println("Invalid choice. Please enter a number between 1 and 3.");

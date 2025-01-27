@@ -1,5 +1,6 @@
 {
   "danUser3": {
+    "name": "Dan",
     "id": "223456789",
     "phoneNumber": "052-7654321",
     "accountNumber": "222222",
@@ -8,6 +9,7 @@
     "userName": "danUser3"
   },
   "galUser1": {
+    "name": "Gal",
     "id": "123456789",
     "phoneNumber": "050-1234567",
     "accountNumber": "111111",
@@ -17,11 +19,11 @@
   },
   "adiUser9": {
     "name": "Adi",
-    "id": "32522",
-    "phoneNumber": "050-23235232",
-    "accountNumber": "32532522",
+    "id": "223456766",
+    "phoneNumber": "052-7654543",
+    "accountNumber": "222253",
     "branch": "EILAT",
-    "role": "Cashier",
+    "role": "Salesperson",
     "userName": "adiUser9"
   }
 }

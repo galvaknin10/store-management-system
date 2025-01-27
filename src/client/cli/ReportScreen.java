@@ -1,6 +1,5 @@
 package client.cli;
 
-import client.RequestSender;
 import shared.Request;
 import shared.Response;
 import java.util.InputMismatchException;
@@ -11,6 +10,8 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Map;
 import java.util.Scanner;
+
+import client.utils.RequestSender;
 
 public class ReportScreen {
 
@@ -36,6 +37,10 @@ public class ReportScreen {
                         return;
                     }
                     case 3 -> {deleteReportByDate(scanner, sender, branch);
+                        return;
+                    }
+                    case 4 -> {
+                        System.out.println("Returning the main menu...");
                         return;
                     }
                     default -> System.out.println("Invalid choice. Please enter a number between 1 and 4.");
@@ -95,17 +100,17 @@ public class ReportScreen {
         st.append("Branch: ").append(report.get("branch")).append("\n")
           .append("Date: ").append(report.get("date")).append("\n")
           .append("-----------------------------------\n")
-          .append("Phones                  Total Sales\n")
+          .append("Devices                  Total Sales\n")
           .append("-----------------------------------\n");
     
         // Use Double instead of Integer
         Map<String, Double> salesData = (Map<String, Double>) report.get("salesData");
         for (Map.Entry<String, Double> entry : salesData.entrySet()) {
-            st.append(String.format("%-20s %10.2f\n", entry.getKey(), entry.getValue()));
+            st.append(String.format("%-20s %.0f\n", entry.getKey(), entry.getValue()));
         }
     
         st.append("-----------------------------------\n")
-          .append("Total Sales for Branch: ").append(report.get("totalSales")).append(" Devices").append("\n");
+          .append("Total Sales for Branch: ").append(String.format("%.0f", report.get("totalSales"))).append(" Devices").append("\n");
     
         System.out.println(st);
     }

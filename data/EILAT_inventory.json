@@ -1,28 +1,51 @@
 {
-  "P002": {
-    "name": "Samsung Galaxy S23",
-    "price": 935.99,
-    "quantity": 30,
+  "P007": {
+    "serialNum": "P007",
+    "name": "JBL Charge 5 Speaker",
+    "price": 185.99,
+    "quantity": 40,
     "branch": "Eilat"
   },
-  "P001": {
-    "name": "iPhone 14 Pro",
-    "price": 1135.99,
+  "P006": {
+    "serialNum": "P006",
+    "name": "Apple Watch Series 8",
+    "price": 535.99,
     "quantity": 18,
     "branch": "Eilat"
   },
-  "P009": {
-    "serialNum": "P009",
-    "name": "iPhone 16",
-    "price": 836.0,
-    "quantity": 26,
-    "branch": "EILAT"
+  "P005": {
+    "serialNum": "P005",
+    "name": "Sony WH-1000XM5 Headphones",
+    "price": 435.99,
+    "quantity": 25,
+    "branch": "Eilat"
   },
-  "P0010": {
-    "serialNum": "P0010",
-    "name": "iPhone 13",
-    "price": 236.0,
-    "quantity": 50,
-    "branch": "EILAT"
+  "P004": {
+    "serialNum": "P004",
+    "name": "Dell XPS 13",
+    "price": 1435.99,
+    "quantity": 10,
+    "branch": "Eilat"
+  },
+  "P003": {
+    "serialNum": "P003",
+    "name": "MacBook Air M2",
+    "price": 1235.99,
+    "quantity": 11,
+    "branch": "Eilat"
+  },
+  "P002": {
+    "serialNum": "P002",
+    "name": "Samsung Galaxy S23",
+    "price": 935.99,
+    "quantity": 26,
+    "branch": "Eilat"
+  },
+  "P001": {
+    "serialNum": "P001",
+    "name": "iPhone 14 Pro",
+    "price": 1135.99,
+    "quantity": 20,
+    "branch": "Eilat"
   }
 }

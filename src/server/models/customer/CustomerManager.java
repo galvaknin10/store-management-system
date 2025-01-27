@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class CustomerManager {
     
-    private static final Map<String, CustomerManager> instances = new HashMap<>();
+    private static final HashMap<String, CustomerManager> instances = new HashMap<>();
 
     static {
         // Automatically create instances for predefined branches

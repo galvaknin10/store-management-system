@@ -1,30 +1,23 @@
 {
-  "123456789": {
-    "fullName": "Alice Brown",
-    "idNumber": "123456789",
-    "phoneNumber": "050-1234567",
+  "401256987": {
+    "name": "Itay Klein",
+    "id": "401256987",
+    "phoneNumber": "050-6549873",
     "type": "New",
-    "branch": "Eilat"
+    "branch": "EILAT"
   },
-  "987654321": {
-    "fullName": "Bob Green",
-    "idNumber": "987654321",
+  "212345678": {
+    "name": "Avi Levi",
+    "id": "212345678",
     "phoneNumber": "052-7654321",
     "type": "VIP",
-    "branch": "Eilat"
+    "branch": "EILAT"
   },
-  "444555666": {
-    "fullName": "Diana Pink",
-    "idNumber": "444555666",
-    "phoneNumber": "054-6549873",
+  "308270394": {
+    "name": "Yael Cohen",
+    "id": "308270394",
+    "phoneNumber": "054-1234567",
     "type": "New",
-    "branch": "Eilat"
-  },
-  "111222333": {
-    "fullName": "Charlie Blue",
-    "idNumber": "111222333",
-    "phoneNumber": "053-9876543",
-    "type": "Returning",
-    "branch": "Eilat"
+    "branch": "EILAT"
   }
 }

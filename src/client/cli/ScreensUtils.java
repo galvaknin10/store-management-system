@@ -4,10 +4,13 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.InputMismatchException;
-import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
-import client.RequestSender;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+
+import client.utils.RequestSender;
+import shared.ChatMessage;
 import shared.Request;
 import shared.Response;
 
@@ -25,10 +28,9 @@ public class ScreensUtils {
             } else {
                 System.out.println("Error: " + response.getMessage());
                 while (true) {
-                    System.out.println("Type 'MENU' to return to the main menu or 'RETRY' to try again: ");
-                    String userChoice = scanner.nextLine().trim().toUpperCase();
+                    String userChoice = getNonEmptyInput(scanner, "Type 'GO BACK' to return to the previous screen or 'RETRY' to try again: ");
                 
-                    if (userChoice.equalsIgnoreCase("MENU")) {
+                    if (userChoice.equalsIgnoreCase("GO BACK")) {
                         return null; 
                     }
                     else if (userChoice.equalsIgnoreCase("RETRY")) {
@@ -177,6 +179,7 @@ public class ScreensUtils {
         }
     }
 
+
     public static int handleVerdict(String verdict) {
         if (verdict.equals("RESTART")) {
             System.out.println("Restarting...");
@@ -211,24 +214,6 @@ public class ScreensUtils {
         return day;
     }
 
-    public static void viewEmployees(RequestSender sender, String branch) {
-        Request request = new Request("VIEW_EMPLOYEES", branch);
-        Response response = sender.sendRequest(request);
-    
-        if (response.isSuccessful()) {
-            System.out.println(response.getMessage());
-            Map<String, Map<String, Object>> employees = (Map<String, Map<String, Object>>) response.getData();
-            employees.forEach((userName, employee) -> {
-                System.out.println("Employee User Name: " + userName);
-                System.out.println("Name: " + employee.get("name"));
-                System.out.println("Role: " + employee.get("role"));
-                System.out.println("Branch: " + employee.get("branch"));
-                System.out.println("--------------------------");
-            });
-        } else {
-            System.out.println("Error: " + response.getMessage());
-        }
-    }
 
     public static Map<String, Map<String, Object>> viewInventory(RequestSender sender, String branch) {
         System.out.println("Fetching inventory...");
@@ -256,29 +241,6 @@ public class ScreensUtils {
         }
     }    
     
-    public static void createNewEmployee(RequestSender sender, Scanner scanner, boolean isManager, String branch, String userName) {
-        String employeeId = ScreensUtils.getNonEmptyInput(scanner, "Enter Employee ID: ");
-        String name = ScreensUtils.getNonEmptyInput(scanner, "Enter Employee Name: ");
-        String phoneNumber = ScreensUtils.getNonEmptyInput(scanner, "Enter Phone Number: ");
-        String accountNumber = ScreensUtils.getNonEmptyInput(scanner, "Enter Account Number: ");
-
-        String role;
-        if (isManager) {
-            role = "Manager";
-        } else {
-            role = getEmployeeRole(scanner);
-        }
-
-        Request request = new Request("ADD_EMPLOYEE", new Object[]{branch, employeeId, name, phoneNumber, accountNumber, role, userName});
-        Response response = sender.sendRequest(request);
-        if (response.isSuccessful()) {
-            System.out.println(response.getMessage());
-            return;
-        } else {
-            System.out.println("Error: " + response.getMessage());
-        }
-    }
-
     protected static String getEmployeeRole(Scanner scanner) {
         while (true) {
             try {
@@ -300,6 +262,12 @@ public class ScreensUtils {
             }
         }
     }
+
+    public static void logOut(RequestSender sender, String userName) {
+        Request disconnectRequest = new Request("DISCONNECT", userName);
+        Response response = sender.sendRequest(disconnectRequest);
+    }
+
 }
 
 

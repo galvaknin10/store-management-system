@@ -1,40 +1,41 @@
 {
-  "27/12/2024": {
-    "salesData": {
-      "Google Pixel 8": 30,
-      "iPhone 14": 50,
-      "Samsung Galaxy S23": 40
-    },
-    "totalSales": 120
-  },
-  "28/12/2024": {
-    "salesData": {
-      "Google Pixel 8": 35,
-      "iPhone 14": 60,
-      "Samsung Galaxy S23": 50
-    },
-    "totalSales": 145
-  },
   "29/12/2024": {
+    "branch": "Eilat",
+    "date": "29/12/2024",
     "salesData": {
-      "Google Pixel 8": 40,
+      "Samsung Galaxy S23": 55,
       "iPhone 14": 70,
-      "Samsung Galaxy S23": 55
+      "Google Pixel 8": 40
     },
     "totalSales": 165
   },
-  "07/01/2025": {
+  "28/12/2024": {
+    "branch": "Eilat",
+    "date": "28/12/2024",
     "salesData": {
-      "iPhone 14 Pro": 2
+      "Samsung Galaxy S23": 50,
+      "iPhone 14": 60,
+      "Google Pixel 8": 35
     },
-    "totalSales": 2
+    "totalSales": 145
   },
-  "08/01/2025": {
-    "branch": "EILAT",
-    "date": "08/01/2025",
+  "27/12/2024": {
+    "branch": "Eilat",
+    "date": "27/12/2024",
     "salesData": {
-      "iPhone 16": 4
+      "Samsung Galaxy S23": 40,
+      "iPhone 14": 50,
+      "Google Pixel 8": 30
     },
-    "totalSales": 4
+    "totalSales": 120
+  },
+  "27/01/2025": {
+    "branch": "EILAT",
+    "date": "27/01/2025",
+    "salesData": {
+      "MacBook Air M2": 6,
+      "Samsung Galaxy S23": 5
+    },
+    "totalSales": 11
   }
 }

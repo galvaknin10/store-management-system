@@ -1,6 +1,5 @@
 package client.cli;
 
-import client.RequestSender;
 import shared.Request;
 import shared.Response;
 import java.util.List;
@@ -8,13 +7,15 @@ import java.util.InputMismatchException;
 import java.util.Map;
 import java.util.Scanner;
 
+import client.utils.RequestSender;
+
 
 public class CustomerScreen {
 
     public static void manageCustomers(RequestSender sender, Scanner scanner, String branch) {
         while (true) {
             try {    
-                System.out.println("\n--- CUSTOMER MANAGEMENT ---\n");
+                System.out.println("\n--- CUSTOMER MANAGEMENT ---");
                 System.out.println("1. Add Customer");
                 System.out.println("2. Remove Customer");
                 System.out.println("3. View Customers");
@@ -110,8 +111,9 @@ public class CustomerScreen {
             System.out.println(response.getMessage());
             Map<String, Map<String, Object>> customers = (Map<String, Map<String, Object>>) response.getData();
             customers.forEach((id, customer) -> {
-                System.out.println("Employee ID: " + id);
-                System.out.println("Name: " + customer.get("name"));
+                System.out.println("\nName: " + customer.get("name"));
+                System.out.println("ID: " + id);
+                System.out.println("Phone: " + customer.get("phoneNumber"));
                 System.out.println("Type: " + customer.get("type"));
                 System.out.println("Branch: " + customer.get("branch"));
                 System.out.println("--------------------------");
@@ -120,5 +122,4 @@ public class CustomerScreen {
             System.out.println("Error: " + response.getMessage());
         }
     }
-
 }

@@ -49,13 +49,23 @@ public class InventoryManager {
         return true;
     }
 
-    protected boolean removeProduct(String productId, String branch) {
-        // Remove the product and check if it was present
-        if (inventory.remove(productId) != null) {
-            InventoryFileHandler.saveInventoryToFile(inventory, branch);
-            return true;
+    protected boolean removeProduct(String productId, String branch, int quantity) {
+        if (inventory.get(productId) == null) {
+            return false;
         }
-        return false;
+
+        int currQuantity = inventory.get(productId).getQuantity();
+
+        if (quantity < currQuantity) {
+            inventory.get(productId).adjustQuantity(quantity);
+        } else if (quantity == currQuantity) {
+            inventory.remove(productId);
+        } else {
+            return false;
+        }
+
+        InventoryFileHandler.saveInventoryToFile(inventory, branch);
+        return true;
     }
     
     public boolean checkOut(Map<String, Integer> cart, String branch) {

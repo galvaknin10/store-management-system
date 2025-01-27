@@ -1,4 +1,4 @@
-package server;
+package server.utils;
 
 import server.models.credentials.*;
 import server.models.customer.*;
@@ -6,7 +6,7 @@ import server.models.employee.*;
 import server.models.inventory.*;
 import server.models.log.*;
 import server.models.report.*;
-import server.utils.ClientInfo;
+import shared.ChatMessage;
 import shared.Request;
 import shared.Response;
 import java.io.*;
@@ -14,47 +14,63 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.PriorityQueue;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ThreadLocalRandom;
 
 import com.google.gson.Gson;
 
 
 public class RequestHandler implements Runnable {
     private final Socket socket;
-    private final ConcurrentHashMap<String, ClientInfo> connectedClients;
+    private final ObjectInputStream input;
+    private final ObjectOutputStream output;
     private ClientInfo clientInfo;
+    private final ConcurrentHashMap<String, ClientInfo> connectedClients;
 
-    public RequestHandler(Socket socket, ConcurrentHashMap<String, ClientInfo> connectedClients) {
+    public RequestHandler(Socket socket, ObjectInputStream input, ObjectOutputStream output,
+                          ConcurrentHashMap<String, ClientInfo> connectedClients) {
         this.socket = socket;
+        this.input = input;
+        this.output = output;
         this.connectedClients = connectedClients;
     }
 
     @Override
     public void run() {
-        try (
-            ObjectInputStream input = new ObjectInputStream(socket.getInputStream());
-            ObjectOutputStream output = new ObjectOutputStream(socket.getOutputStream())
-        ) {
+        try {
             while (true) {
                 Object requestObj = input.readObject();
                 if (requestObj instanceof Request request) {
                     Response response = handleRequest(request);
                     output.writeObject(response);
+                    output.flush();
                 } else {
                     System.out.println("Invalid request from client.");
                 }
             }
         } catch (IOException | ClassNotFoundException e) {
-            System.err.println("Client disconnected: " + e.getMessage());
             if (clientInfo != null) {
-                connectedClients.remove(clientInfo.getUsername());
-                System.out.println("Client removed: " + clientInfo);
+                System.err.println(clientInfo.getUsername() + " Disconnected from the system.");
+            } else {
+                System.err.println( "Unknown client Disconnected from the system.");
             }
+        } finally {
+            closeStreams();
         }
     }
     
-    
+    private void closeStreams() {
+        try {
+            if (input != null) input.close();
+            if (output != null) output.close();
+            if (socket != null && !socket.isClosed()) socket.close();
+        } catch (IOException ex) {
+            System.err.println("Error closing client resources: " + ex.getMessage());
+        }
+    }
+
     private Response handleRequest(Request request) {
         String action = request.getAction();
         Object data = request.getData();
@@ -112,10 +128,11 @@ public class RequestHandler implements Runnable {
                 Object[] productInfo = (Object[]) data;
                 String branch = (String) productInfo[0];
                 String serialNum = (String) productInfo[1];
-                if (InventoryController.removeProduct(branch, serialNum)) {
+                int quantity = (int) productInfo[2];
+                if (InventoryController.removeProduct(branch, serialNum, quantity)) {
                     return new Response(true, null, "*Product removed successfully*");
                 } else {
-                    return new Response(false, null, "Failed removing product.");
+                    return new Response(false, null, "Failed removing product, Check quantity or serial number...");
                 }
             }
             case "FIND_CUSTOMER" -> {
@@ -179,16 +196,17 @@ public class RequestHandler implements Runnable {
                 String password = (String) credentials[1];
                 String branch = (String) credentials[2];
             
-                synchronized (connectedClients) { // Ensure thread-safe access
-                    if (connectedClients.containsKey(username)) {
-                        return new Response(false, null, "Username is already connected.");
-                    }
+                if (connectedClients.containsKey(username)) {
+                    return new Response(false, null, "Username is already connected.");
                 }
 
                 CredentialsManager credentialsManager = CredentialsManager.getInstance(branch);
                 if (credentialsManager.authenticate(username, password)) {
+                    EmployeeManager employeeManager = EmployeeManager.getInstance(branch);
+                    String role = employeeManager.getEmployee(username).getRole();
+
                     // Add to connected clients after successful authentication
-                    clientInfo = new ClientInfo(username, branch, socket);
+                    clientInfo = new ClientInfo(username, branch, role, output);
                     connectedClients.put(username, clientInfo);
                     System.out.println("Client authenticated: " + clientInfo);
                     return new Response(true, null, "*Authentication successful*");
@@ -207,6 +225,20 @@ public class RequestHandler implements Runnable {
                     return new Response(true, employee.getRole(), "*Role retrieved successfully*");
                 } else {
                     return new Response(false, null, "Employee not found.");
+                }
+            }
+            case "CHECK_IF_MANAGER" -> {
+                String userName = (String) data;
+                EmployeeManager employeeManagerEilat = EmployeeManager.getInstance("EILAT");
+                EmployeeManager employeeManagerJerusalem = EmployeeManager.getInstance("JERUSALEM");
+
+                Employee option1 = employeeManagerEilat.getEmployee(userName);
+                Employee option2 = employeeManagerJerusalem.getEmployee(userName);
+
+                if ((option1 != null && option1.getRole().equals("Manager")) || (option2 != null && option2.getRole().equals("Manager"))) {
+                    return new Response(true, null, "Sender is a manager.");
+                } else {
+                    return new Response(false, null, "Sender is not a manager.");
                 }
             }
             case "REMOVE_EMPLOYEE" -> {
@@ -356,7 +388,243 @@ public class RequestHandler implements Runnable {
                     
                     return new Response(true, logsAsMaps, "*Logs retrieved successfully*");
                 }
-            }       
+            }
+            case "START_CHAT" -> {
+                String requesterName = (String) data; // Requester username
+                String partnerUserName = ChatManager.getInstance(connectedClients).startChat(requesterName);
+                if (partnerUserName != null) {
+                    return new Response(true, partnerUserName, "Available client has been found!");
+                } else {
+                    return new Response(false, null, "All clients are currently busy, there is a chance that bussy client will return to you, or you can try again later.");
+                }
+            }
+            case "ADD_CHAT_SESSION" -> {
+                Object[] massageInfo = (Object[]) data;
+                String sessionId = (String) massageInfo[0];
+                String userName = (String) massageInfo[1];
+                String partnerUserName = (String) massageInfo[2];
+                
+                if (ChatManager.getInstance(connectedClients).confirmChat(sessionId, userName, partnerUserName)) {
+                    return new Response(true, null, "Chat successfully created!");
+                } else {
+                    return new Response(false, null, "Failed creating chat.");
+                }
+            }
+            case "SEND_MESSAGE" -> {
+                Object[] massageInfo = (Object[]) data;
+                String sessionId = (String) massageInfo[0];
+                ChatMessage message = (ChatMessage) massageInfo[1];
+
+                if (ChatManager.getInstance(connectedClients).sendMessage(message)) {
+                    SessionManager.trackMessages(sessionId, message);
+
+                    return new Response(true, null, "Message sent successfully.");
+                } else {
+                    return new Response(false, null, "Failed to send the message.");
+                }
+            }
+            case "END_CHAT" -> {
+                String sessionId = (String) data; // Username ending the chat
+                if (ChatManager.getInstance(connectedClients).endChat(sessionId)) {
+                    SessionManager.removeStagedChat(sessionId);
+                    return new Response(true, null, "successfully exit the chat.");
+                } else {
+                    return new Response(false, null, "Failed to exit from chat.");
+                }
+            }
+            case "ESCAPE_CHAT_SESSION" -> {
+                Object[] massageInfo = (Object[]) data;
+                String sessionId = (String) massageInfo[0];
+                String userName = (String) massageInfo[1];
+                ChatSession session = SessionManager.getSession(sessionId);
+
+                if (userName.equals(session.getUserName())) {
+                    session.setClientAOnline(false);
+                }
+
+                if (userName.equals(session.getPartnerUserName())) {
+                    session.setClientBOnline(false);
+                }
+
+                return new Response(true, null, "Temporarily escape session");
+            }
+            case "CONNECT_CHAT_SESSION" -> {
+                Object[] massageInfo = (Object[]) data;
+                String sessionId = (String) massageInfo[0];
+                String userName = (String) massageInfo[1];
+                ChatSession session = SessionManager.getSession(sessionId);
+
+                if (userName.equals(session.getPartnerUserName())) {
+                    session.setClientBOnline(true);
+                }
+                return new Response(true, null, "B is now online.");
+
+            }
+            case "IS_PARTNER_TURN" -> {
+                Object[] sessionInfo = (Object[]) data;
+                String sessionId = (String) sessionInfo[0];
+                String partnerUserName = (String) sessionInfo[1];
+                ChatSession session = SessionManager.getSession(sessionId);
+                boolean partnerTurn = true;
+
+                if (partnerUserName.equals(session.getPartnerUserName())) {
+                    partnerTurn = session.isClientBTurn();
+                }
+                
+                if (partnerUserName.equals(session.getUserName())) {
+                    partnerTurn = session.isClientATurn();
+                }
+
+                if (partnerTurn) {
+                    return new Response(true, null, "Its partner turn.");
+                } else {
+                    return new Response(false, null, "Its your turn.");
+                }
+            }
+            case "IS_PARTNER_ONLINE" -> {
+                Object[] sessionInfo = (Object[]) data;
+                String sessionId = (String) sessionInfo[0];
+                String partnerUserName = (String) sessionInfo[1];
+                ChatSession session = SessionManager.getSession(sessionId);
+                boolean partnerOnline = true;
+
+                if (partnerUserName.equals(session.getPartnerUserName())) {
+                    partnerOnline = session.isClientBOnline();
+                }
+                
+                if (partnerUserName.equals(session.getUserName())) {
+                    partnerOnline = session.isClientAOnline();
+                }
+
+                if (partnerOnline) {
+                    return new Response(true, null, "Partner is active in a live chat.");
+                } else {
+                    return new Response(false, null, "Partner is offline.");
+                }
+            }
+            case "IS_PARTNER_EXIT" -> {
+                Object[] sessionInfo = (Object[]) data;
+                String sessionId = (String) sessionInfo[0];
+                String partnerUserName = (String) sessionInfo[1];
+                ChatSession session = SessionManager.getSession(sessionId);
+                boolean partnerExit = true;
+
+                if (partnerUserName.equals(session.getPartnerUserName())) {
+                    partnerExit = session.isClientBExit();
+                }
+                
+                if (partnerUserName.equals(session.getUserName())) {
+                    partnerExit = session.isClientAExit();
+                }
+
+                if (partnerExit) {
+                    return new Response(true, null, "Partner exit.");
+                } else {
+                    return new Response(false, null, "Partner didnt exit.");
+                }
+            }
+            case "UPDATE_TURN" -> {
+                Object[] sessionInfo = (Object[]) data;
+                String sessionId = (String) sessionInfo[0];
+                String userName = (String) sessionInfo[1];
+                String partnerUserName = (String) sessionInfo[2];
+                ChatSession session = SessionManager.getSession(sessionId);
+
+                if (userName.equals(session.getUserName()) && partnerUserName.equals(session.getPartnerUserName())) {
+                    session.setClientATurn(false);
+                    session.setClientBTurn(true);
+                }
+
+                if (userName.equals(session.getPartnerUserName()) && partnerUserName.equals(session.getUserName())) {
+                    session.setClientBTurn(false);
+                    session.setClientATurn(true);
+                }
+                
+                return new Response(true, null, "State updated.");
+            }
+            case "UPDATE_EXIT" -> {
+                Object[] sessionInfo = (Object[]) data;
+                String sessionId = (String) sessionInfo[0];
+                String userName = (String) sessionInfo[1];
+                ChatSession session = SessionManager.getSession(sessionId);
+                
+                if (userName.equals(session.getUserName())) {
+                    session.setClientAExit(true);
+                }
+
+                if (userName.equals(session.getPartnerUserName())) {
+                    session.setClientBExit(true);
+                }
+
+                return new Response(true, null, "State updated.");
+            }
+            case "LOG_CHAT" -> {
+                String sessionId = (String) data;
+                List<ChatMessage> chatLog = SessionManager.getSortedChatLog(sessionId);
+                if (chatLog != null) {
+                    for (ChatMessage message : chatLog) {
+                        LogController.logChatContent(message);
+                    }
+                    return new Response(true, null, "Chat logged successfully.");
+                } else {
+                    return new Response(false, null, "Failed to log chat, chat log is empty.");
+                }
+            }
+            case "INTERRUPT_LIVE_CHAT" -> {
+                ConcurrentHashMap<String, List<ChatMessage>> chatLogs = SessionManager.getChatLogs();
+                Object[] keys = chatLogs.keySet().toArray();
+                
+                if (keys.length == 0) {
+                    return null;
+                }
+  
+                int randomIndex = ThreadLocalRandom.current().nextInt(keys.length);
+                String randomSessionId = (String) keys[randomIndex];
+                List<ChatMessage> chatLog = SessionManager.getSortedChatLog(randomSessionId);
+                
+
+                ChatSession sessionInfo = SessionManager.getSession(randomSessionId);
+                String userName;
+
+                if (sessionInfo.isClientATurn()) {
+                    userName = sessionInfo.getPartnerUserName();
+                } else {
+                    userName = sessionInfo.getUserName();
+                }
+
+                return new Response(true, new Object[]{userName, chatLog}, "Found some live chat for you!");
+            }
+            case "IS_MANAGRE_INTERRUPT" -> {
+                Object[] sessionInfo = (Object[]) data;
+                String sessionId = (String) sessionInfo[0];
+                String userName = (String) sessionInfo[1];
+                ChatSession session = SessionManager.getSession(sessionId);
+                boolean userNameExit = true;
+
+                if (userName.equals(session.getUserName())) {
+                    userNameExit = session.isClientAExit();
+                }
+                
+                if (userName.equals(session.getPartnerUserName())) {
+                    userNameExit = session.isClientBExit();
+                }
+
+                if (userNameExit) {
+                    return new Response(true, null, "Manager interrupt.");
+                } else {
+                    return new Response(false, null, "Manaegr doesnt interrupt.");
+                }
+            } 
+            case "DISCONNECT" -> {
+                String userName = (String) data;
+                if (userName != null) {
+                    connectedClients.remove(userName);
+                    System.out.println(clientInfo.getUsername() + " Logout from the system");
+                } else {
+                    System.out.println("Unknown client disconnected form the server.");
+                }
+                return new Response(true, null, "Disconnected successfully.");
+            }
             default -> {
                 return new Response(false, null, "Unknown action: " + action);
             }

@@ -55,7 +55,8 @@ public class CredentialsFileHandler {
         if (!FileHandler.fileExists("data/EILAT_credentials.json")) {
             createDefaultRepo("data/EILAT_credentials.json", Map.of(
                 "galUser1", new Credentials("galUser1", hashPassword("Strong#99"), "Eilat"),
-                "danUser3", new Credentials("danUser3", hashPassword("Qw3rty!@"), "Eilat")
+                "danUser3", new Credentials("danUser3", hashPassword("Qw3rty!@"), "Eilat"),
+                "adiUser9", new Credentials("adiUser9", hashPassword("Ab3@12345"), "Eilat")
             ));
         }
     
@@ -63,7 +64,8 @@ public class CredentialsFileHandler {
         if (!FileHandler.fileExists("data/JERUSALEM_credentials.json")) {
             createDefaultRepo("data/JERUSALEM_credentials.json", Map.of(
                 "rioUser2", new Credentials("rioUser2", hashPassword("N0tEasy#"), "JERUSALEM"),
-                "davidUser4", new Credentials("davidUser4", hashPassword("Go0d#Luck"), "JERUSALEM")
+                "davidUser4", new Credentials("davidUser4", hashPassword("Go0d#Luck"), "JERUSALEM"),
+                "alonUser7", new Credentials("alonUser7", hashPassword("123456Ab&"), "JERUSALEM")
             ));
         }
     }

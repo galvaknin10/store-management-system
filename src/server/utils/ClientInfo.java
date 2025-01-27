@@ -1,17 +1,20 @@
 package server.utils;
 
-import java.net.Socket;
+import java.io.ObjectOutputStream;
+
 
 public class ClientInfo {
     private String username;       // The username of the client
-    private String branch;         // The branch the client belongs to
-    private Socket socket;         // The client's socket for communication
+    private String branch;     
+    private String role;    // The branch the client belongs to
     private boolean isAvailable;   // Whether the client is available for chat
+    private final ObjectOutputStream output;
 
-    public ClientInfo(String username, String branch, Socket socket) {
+    public ClientInfo(String username, String branch, String role, ObjectOutputStream output) {
         this.username = username;
         this.branch = branch;
-        this.socket = socket;
+        this.role = role;
+        this.output = output;
         this.isAvailable = true; // Default to available
     }
 
@@ -32,13 +35,14 @@ public class ClientInfo {
         this.branch = branch;
     }
 
-    public Socket getSocket() {
-        return socket;
+    public String getRole() {
+        return role;
     }
 
-    public void setSocket(Socket socket) {
-        this.socket = socket;
+    public ObjectOutputStream getOutputStream() {
+        return output;
     }
+
 
     public boolean isAvailable() {
         return isAvailable;

@@ -1,5 +1,6 @@
 package server.models.log;
 
+import shared.ChatMessage;
 
 public class LogController {
 
@@ -41,14 +42,11 @@ public class LogController {
         addRecordToLog(branch, "Sell Product", "Product sold: " + productName + ", Quantity: " + quantity);
     }
 
-    // Add a log entry for starting a chat
-    public static void logChatInitiation(String branch, String fromUser, String toUser) {
-        addRecordToLog(branch, "Chat Initiation", "Chat started between " + fromUser + " and " + toUser);
-    }
 
     // Add a log entry for saving chat content
-    public static void logChatContent(String branch, String fromUser, String toUser, String chatContent) {
-        addRecordToLog(branch, "Chat Content Saved", "Chat between " + fromUser + " and " + toUser + ": " + chatContent);
+    public static void logChatContent(ChatMessage message) {
+        addRecordToLog("EILAT", "Chat Massege", message.toString());
+        addRecordToLog("JERUSALEM", "Chat Massege", message.toString());
     }
 }
 

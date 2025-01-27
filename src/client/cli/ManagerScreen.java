@@ -1,26 +1,29 @@
 package client.cli;
 
-import client.RequestSender;
+import shared.ChatMessage;
 import shared.Request;
 import shared.Response;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Map;
+import java.util.PriorityQueue;
 import java.util.Scanner;
+
+import client.utils.RequestSender;
 
 
 public class ManagerScreen {
 
-    public static boolean managerScreen(Scanner scanner, RequestSender sender, String branch) {
+    public static boolean managerScreen(Scanner scanner, RequestSender sender, String branch, String userName) {
         while (true) {
             try {
-                System.out.println("\n--- MANAGER MENU (" + branch + ") ---");
+                System.out.println("\n--- MAIN MENU" + "     [" + branch + "-" + "Manager" + "-" + userName + "]" + " ---");
                 System.out.println("1. Add New User (New Employee to the system)");
                 System.out.println("2. Manage Employees");
                 System.out.println("3. Manage Inventory");
                 System.out.println("4. Manage Customers");
                 System.out.println("5. Manage Reports");
-                System.out.println("6. Manage Chats"); // New option
+                System.out.println("6. Join live chat"); // New option
                 System.out.println("7. Display Logs");
                 System.out.println("8. Exit");
                 System.out.print("Enter your choice: ");
@@ -33,11 +36,12 @@ public class ManagerScreen {
                     case 3 -> manageInventory(scanner, sender);
                     case 4 -> manageCustomers(scanner, sender);
                     case 5 -> manageReports(scanner, sender);
-                    case 6 -> manageChats(scanner, sender); // New method for managing chats
+                    case 6 -> joinLiveChat(scanner, sender, userName); 
                     case 7 -> displayLogs(scanner, sender);
                     case 8 -> {
-                        System.out.println("Exiting Manager Menu. Goodbye!");
-                        return false; 
+                        ScreensUtils.logOut(sender, userName);
+                        System.out.println("Exiting the system, goodbye :)");
+                        return false;
                     }
                     default -> System.out.println("Invalid choice. Please enter a number between 1 and 8.");
                 }
@@ -49,7 +53,7 @@ public class ManagerScreen {
     }
 
     private static void addNewUser(Scanner scanner, RequestSender sender) {
-        System.out.println("Register the new user");
+        System.out.println("Register the new user: ");
         String branch = ScreensUtils.validateBranch(scanner, sender);
         if (branch == null) {
             return;
@@ -74,11 +78,11 @@ public class ManagerScreen {
 
                 switch (choice) {
                     case 1 -> {
-                        ScreensUtils.createNewEmployee(sender, scanner, true, branch, userName);
+                        createNewEmployee(sender, scanner, true, branch, userName);
                         return;
                     }
                     case 2 -> {
-                        ScreensUtils.createNewEmployee(sender, scanner, false, branch, userName);
+                        createNewEmployee(sender, scanner, false, branch, userName);
                         return;
                     }
                     case 3 -> {
@@ -145,44 +149,46 @@ public class ManagerScreen {
             System.out.println("Error: " + response.getMessage());
         }
     } 
-    
-    private static void manageChats(Scanner scanner, RequestSender sender) {
-        try {
-            System.out.println("\n--- Manage Chats ---");
-    
-            Request listChatsRequest = new Request("LIST_ACTIVE_CHATS", null);
-            Response response = sender.sendRequest(listChatsRequest);
-    
-            if (response.isSuccessful()) {
-                List<Map<String, String>> activeChats = (List<Map<String, String>>) response.getData();
-                System.out.println("Active Chats:");
-                for (int i = 0; i < activeChats.size(); i++) {
-                    Map<String, String> chat = activeChats.get(i);
-                    System.out.printf("%d. Chat between %s and %s%n", i + 1, chat.get("sender"), chat.get("recipient"));
-                }
-    
-                System.out.print("Enter the number of the chat to join, or 0 to go back: ");
-                int choice = scanner.nextInt();
-                scanner.nextLine();
-    
-                if (choice > 0 && choice <= activeChats.size()) {
-                    Map<String, String> selectedChat = activeChats.get(choice - 1);
-                    Request joinChatRequest = new Request("JOIN_CHAT", selectedChat);
-                    Response joinResponse = sender.sendRequest(joinChatRequest);
-    
-                    if (joinResponse.isSuccessful()) {
-                        System.out.println("Joined chat successfully.");
-                    } else {
-                        System.out.println("Error: " + joinResponse.getMessage());
-                    }
-                }
-            } else {
-                System.out.println("Error: " + response.getMessage());
-            }
-        } catch (Exception e) {
-            System.err.println("Error managing chats: " + e.getMessage());
+
+    private static void createNewEmployee(RequestSender sender, Scanner scanner, boolean isManager, String branch, String userName) {
+        String employeeId = ScreensUtils.getNonEmptyInput(scanner, "Enter Employee ID: ");
+        String name = ScreensUtils.getNonEmptyInput(scanner, "Enter Employee Name: ");
+        String phoneNumber = ScreensUtils.getNonEmptyInput(scanner, "Enter Phone Number: ");
+        String accountNumber = ScreensUtils.getNonEmptyInput(scanner, "Enter Account Number: ");
+
+        String role;
+        if (isManager) {
+            role = "Manager";
+        } else {
+            role = ScreensUtils.getEmployeeRole(scanner);
+        }
+
+        Request request = new Request("ADD_EMPLOYEE", new Object[]{branch, employeeId, name, phoneNumber, accountNumber, role, userName});
+        Response response = sender.sendRequest(request);
+        if (response.isSuccessful()) {
+            System.out.println(response.getMessage());
+            return;
+        } else {
+            System.out.println("Error: " + response.getMessage());
         }
     }
-    
+
+
+    private static void joinLiveChat(Scanner scanner, RequestSender sender, String userName) {
+        Request request = new Request("INTERRUPT_LIVE_CHAT", null);
+        Response response = sender.sendRequest(request);
+
+        if (response.isSuccessful()) {
+            Object[] chatInfo = (Object[]) response.getData();
+            String partnerUserName = (String) chatInfo[0];
+            List<ChatMessage> previousConversation = (List<ChatMessage>) chatInfo[1];
+
+            for (ChatMessage message : previousConversation) {
+                System.out.println(message); 
+            }
+
+            ChatUtils.runChat(scanner, sender, userName, partnerUserName);
+        }
+    }
 }
 

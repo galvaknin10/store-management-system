@@ -1,11 +1,13 @@
 package client.cli;
 
-import client.RequestSender;
 import shared.Request;
 import shared.Response;
 import java.util.InputMismatchException;
 import java.util.Map;
 import java.util.Scanner;
+
+import client.utils.RequestSender;
+
 import java.util.List;
 
 
@@ -14,7 +16,7 @@ public class InventoryScreen {
     public static void manageInventory(RequestSender sender, Scanner scanner, String branch) {
         while (true) {
             try {
-                System.out.println("\n--- INVENTORY MANAGEMENT ---\n");
+                System.out.println("\n--- INVENTORY MANAGEMENT ---");
                 System.out.println("1. Add Product");
                 System.out.println("2. Remove Product");
                 System.out.println("3. View Inventory");
@@ -101,7 +103,25 @@ public class InventoryScreen {
         System.out.println("\n--- Remove Product ---");
         String serialNum = ScreensUtils.getNonEmptyInput(scanner, "Enter Product Serial Number to remove: ");
 
-        Request request = new Request("REMOVE_PRODUCT", new Object[]{branch, serialNum});
+        int quantity;
+        while (true) {
+            try {
+                System.out.print("Enter How Many Units: ");
+                quantity = scanner.nextInt();
+
+                if (quantity <= 0) {
+                    System.out.println("Invalid quantity. try again...");
+                    continue;
+                }
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please enter a valid number.");
+                scanner.nextLine();
+            }
+        }
+
+
+        Request request = new Request("REMOVE_PRODUCT", new Object[]{branch, serialNum, quantity});
         Response response = sender.sendRequest(request);
         if (response.isSuccessful()) {
             System.out.println("Product removed successfully!");

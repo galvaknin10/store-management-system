@@ -35,20 +35,20 @@ public class CustomerFileHandler {
         // Create Eilat customers file if it doesn't exist
         if (!FileHandler.fileExists("data/EILAT_customers.json")) {
             createDefaultRepo("data/EILAT_customers.json", Map.of(
-                "123456789", new Customer("Alice Brown", "123456789", "050-1234567", "New", "Eilat"),
-                "987654321", new Customer("Bob Green", "987654321", "052-7654321", "VIP", "Eilat"),
-                "111222333", new Customer("Charlie Blue", "111222333", "053-9876543", "Returning", "Eilat"),
-                "444555666", new Customer("Diana Pink", "444555666", "054-6549873", "New", "Eilat")
+                "308270394", new Customer("Yael Cohen", "308270394", "054-1234567", "New", "EILAT"),
+                "212345678", new Customer("Avi Levi", "212345678", "052-7654321", "VIP", "EILAT"),
+                "317852963", new Customer("Noa Bar", "317852963", "053-9876543", "Returning", "EILAT"),
+                "401256987", new Customer("Itay Klein", "401256987", "050-6549873", "New", "EILAT")
             ));
         }
 
         // Create Jerusalem customers file if it doesn't exist
         if (!FileHandler.fileExists("data/JERUSALEM_customers.json")) {
             createDefaultRepo("data/JERUSALEM_customers.json", Map.of(
-                "555666777", new Customer("Eve White", "555666777", "055-3216549", "New", "Jerusalem"),
-                "888999000", new Customer("Frank Black", "888999000", "056-9517538", "VIP", "Jerusalem"),
-                "123123123", new Customer("Grace Yellow", "123123123", "057-8529637", "VIP", "Jerusalem"),
-                "321321321", new Customer("Hank Orange", "321321321", "058-1478523", "Returning", "Jerusalem")
+                "555666777", new Customer("Tamar Shamir", "555666777", "055-3216549", "New", "Jerusalem"),
+                "888999000", new Customer("Yossi Peretz", "888999000", "056-9517538", "VIP", "Jerusalem"),
+                "123123123", new Customer("Shira Avrahami", "123123123", "057-8529637", "VIP", "Jerusalem"),
+                "321321321", new Customer("Nadav Ben-David", "321321321", "058-1478523", "Returning", "Jerusalem")
             ));
         }
     }
