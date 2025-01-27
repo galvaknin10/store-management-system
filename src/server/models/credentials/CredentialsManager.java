@@ -2,6 +2,7 @@ package server.models.credentials;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 
 public class CredentialsManager {
@@ -19,7 +20,7 @@ public class CredentialsManager {
 
     // Private constructor to prevent external instantiation
     private CredentialsManager(String branch) {
-        this.credentials = CredentialsFileHandler.loadCredentialsFromFile(branch);
+        this.credentials = new ConcurrentHashMap<>(CredentialsFileHandler.loadCredentialsFromFile(branch));
     }
 
     // Method to initialize instances for a specific branch
@@ -39,7 +40,7 @@ public class CredentialsManager {
     }
     
     // Add new credentials
-    protected boolean addCredentials(String username, String userPassword, String branch) {
+    protected synchronized boolean addCredentials(String username, String userPassword, String branch) {
         if (username == null || username.isEmpty() ||userPassword == null || userPassword.isEmpty()) {
             return false;
         }
@@ -53,7 +54,7 @@ public class CredentialsManager {
     }
 
     // Remove credentials by username
-    protected boolean removeCredentials(String username, String branch) {
+    protected synchronized boolean removeCredentials(String username, String branch) {
         if (credentials.remove(username) != null) {
             CredentialsFileHandler.saveCredentialsToFile(credentials, branch);
             return true;
@@ -61,17 +62,6 @@ public class CredentialsManager {
         return false;
     }
 
-    // Update a user's password
-    public void updatePassword(String username, String newPlainPassword) {
-        if (!credentials.containsKey(username)) {
-            System.out.println("User not found: " + username);
-            return;
-        }
-        String branch = credentials.get(username).getBranch();
-        String newPasswordHash = CredentialsFileHandler.hashPassword(newPlainPassword);
-        credentials.put(username, new Credentials(username, newPasswordHash, branch));
-        System.out.println("Password updated successfully for user: " + username);
-    }
 
     // Get all credentials
     public Map<String, Credentials> getAllCredentials() {

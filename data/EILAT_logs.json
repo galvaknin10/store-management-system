@@ -1,80 +1,74 @@
 [
   {
-    "timestamp": "2025-01-27T11:40:14.942374700",
+    "timestamp": "2025-01-27T15:18:23.714720800",
     "action": "Initiate Action",
     "details": "log file initiated",
     "branch": "EILAT"
   },
   {
-    "timestamp": "2025-01-27T11:43:53.503246",
-    "action": "Remove Customer",
-    "details": "Customer created: 317852963",
-    "branch": "EILAT"
-  },
-  {
-    "timestamp": "2025-01-27T11:45:50.035079300",
-    "action": "Remove User Name",
-    "details": "User name removed: adiUser9",
-    "branch": "EILAT"
-  },
-  {
-    "timestamp": "2025-01-27T11:45:50.036074",
-    "action": "Remove Employee",
-    "details": "Employee removed: adiUser9",
-    "branch": "EILAT"
-  },
-  {
-    "timestamp": "2025-01-27T11:47:14.365553100",
+    "timestamp": "2025-01-27T15:20:50.717075400",
     "action": "Create User Name",
-    "details": "User Name created: adiUser9",
+    "details": "User Name created: rotemUser11",
     "branch": "EILAT"
   },
   {
-    "timestamp": "2025-01-27T11:48:06.459129300",
+    "timestamp": "2025-01-27T15:21:32.893358800",
     "action": "Create Employee",
-    "details": "Employee created: 223456766",
+    "details": "Employee created: 564785321",
     "branch": "EILAT"
   },
   {
-    "timestamp": "2025-01-27T12:04:41.842924400",
+    "timestamp": "2025-01-27T15:28:11.008848800",
+    "action": "Create Customer",
+    "details": "Customer created: 34456633",
+    "branch": "EILAT"
+  },
+  {
+    "timestamp": "2025-01-27T15:34:40.895181800",
+    "action": "Remove User Name",
+    "details": "User name removed: rotemUser11",
+    "branch": "EILAT"
+  },
+  {
+    "timestamp": "2025-01-27T15:34:40.898173200",
+    "action": "Remove Employee",
+    "details": "Employee removed: Rotem",
+    "branch": "EILAT"
+  },
+  {
+    "timestamp": "2025-01-27T15:35:54.570142400",
+    "action": "Create Customer",
+    "details": "Customer created: Odi Aviv",
+    "branch": "EILAT"
+  },
+  {
+    "timestamp": "2025-01-27T15:40:00.022702900",
+    "action": "Create Customer",
+    "details": "Customer created: Shalom Ami",
+    "branch": "EILAT"
+  },
+  {
+    "timestamp": "2025-01-27T15:43:37.802478300",
     "action": "Sell Product",
     "details": "Product sold: MacBook Air M2, Quantity: 2",
     "branch": "EILAT"
   },
   {
-    "timestamp": "2025-01-27T12:04:41.861149100",
-    "action": "Sell Product",
-    "details": "Product sold: Samsung Galaxy S23, Quantity: 1",
+    "timestamp": "2025-01-27T18:28:50.185336600",
+    "action": "Chat Massege",
+    "details": "From: davidUser4, To: adiUser9, Message: hello",
     "branch": "EILAT"
   },
   {
-    "timestamp": "2025-01-27T12:10:17.542547600",
-    "action": "Sell Product",
-    "details": "Product sold: Samsung Galaxy S23, Quantity: 1",
+    "timestamp": "2025-01-27T18:28:50.200295700",
+    "action": "Chat Massege",
+    "details": "From: adiUser9, To: davidUser4, Message: whats up?",
     "branch": "EILAT"
   },
   {
-    "timestamp": "2025-01-27T12:33:14.175460900",
-    "action": "Sell Product",
-    "details": "Product sold: MacBook Air M2, Quantity: 1",
-    "branch": "EILAT"
-  },
-  {
-    "timestamp": "2025-01-27T12:33:19.696689900",
-    "action": "Sell Product",
-    "details": "Product sold: MacBook Air M2, Quantity: 1",
-    "branch": "EILAT"
-  },
-  {
-    "timestamp": "2025-01-27T12:35:59.899277200",
-    "action": "Sell Product",
-    "details": "Product sold: Samsung Galaxy S23, Quantity: 1",
-    "branch": "EILAT"
-  },
-  {
-    "timestamp": "2025-01-27T12:38:15.086135300",
-    "action": "Sell Product",
-    "details": "Product sold: Samsung Galaxy S23, Quantity: 1",
+    "timestamp": "2025-01-27T18:28:50.206280700",
+    "action": "Chat Massege",
+    "details": "From: davidUser4, To: adiUser9, Message: im fine",
     "branch": "EILAT"
   }
 ]

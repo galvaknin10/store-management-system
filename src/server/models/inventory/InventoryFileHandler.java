@@ -10,7 +10,7 @@ import java.util.Map;
 public class InventoryFileHandler {
 
     // Save inventory to a JSON file specific to a branch
-    protected static void saveInventoryToFile(Map<String, Product> inventory, String branch) {
+    protected synchronized static void saveInventoryToFile(Map<String, Product> inventory, String branch) {
         String fileName = "data/" + branch + "_inventory.json";
         FileHandler.createJsonFile(inventory, fileName);
     }

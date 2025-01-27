@@ -11,7 +11,7 @@ import java.util.List;
 public class LogFileHandler {
 
     // Save logs to the JSON file for a specific branch
-    protected static void saveLogsToFile(List<Log> logs, String branch) {
+    protected synchronized static void saveLogsToFile(List<Log> logs, String branch) {
         String filePath = "data/" + branch + "_logs.json";
         FileHandler.createJsonFile(logs, filePath);
     }

@@ -97,7 +97,7 @@ public class ScreensUtils {
                     return new String[]{"EXIT", userInfo[0]};
                 }
             } else {
-                System.out.println("Error" + authResponse.getMessage());
+                System.out.println("Error: " + authResponse.getMessage());
                 tries--;
                 System.out.printf(authResponse.getMessage() + " %d attempt%s remaining.%n", tries, tries > 1 ? "s" : "");
     

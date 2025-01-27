@@ -432,23 +432,7 @@ public class RequestHandler implements Runnable {
                     return new Response(false, null, "Failed to exit from chat.");
                 }
             }
-            case "ESCAPE_CHAT_SESSION" -> {
-                Object[] massageInfo = (Object[]) data;
-                String sessionId = (String) massageInfo[0];
-                String userName = (String) massageInfo[1];
-                ChatSession session = SessionManager.getSession(sessionId);
-
-                if (userName.equals(session.getUserName())) {
-                    session.setClientAOnline(false);
-                }
-
-                if (userName.equals(session.getPartnerUserName())) {
-                    session.setClientBOnline(false);
-                }
-
-                return new Response(true, null, "Temporarily escape session");
-            }
-            case "CONNECT_CHAT_SESSION" -> {
+            case "MAKE_PARTNER_ONLINE" -> {
                 Object[] massageInfo = (Object[]) data;
                 String sessionId = (String) massageInfo[0];
                 String userName = (String) massageInfo[1];
@@ -458,7 +442,6 @@ public class RequestHandler implements Runnable {
                     session.setClientBOnline(true);
                 }
                 return new Response(true, null, "B is now online.");
-
             }
             case "IS_PARTNER_TURN" -> {
                 Object[] sessionInfo = (Object[]) data;
@@ -572,6 +555,11 @@ public class RequestHandler implements Runnable {
             }
             case "INTERRUPT_LIVE_CHAT" -> {
                 ConcurrentHashMap<String, List<ChatMessage>> chatLogs = SessionManager.getChatLogs();
+
+                if (chatLogs.isEmpty()) {
+                    return new Response(false, null, "There is no any active chat right now.");
+                }
+ 
                 Object[] keys = chatLogs.keySet().toArray();
                 
                 if (keys.length == 0) {
@@ -621,7 +609,7 @@ public class RequestHandler implements Runnable {
                     connectedClients.remove(userName);
                     System.out.println(clientInfo.getUsername() + " Logout from the system");
                 } else {
-                    System.out.println("Unknown client disconnected form the server.");
+                    System.out.println("Unknown client disconnected from the server.");
                 }
                 return new Response(true, null, "Disconnected successfully.");
             }

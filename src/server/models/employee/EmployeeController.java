@@ -8,11 +8,12 @@ public class EmployeeController {
 
     public static boolean removeEmployee(String branch, String userName) {
         EmployeeManager employeeManager = EmployeeManager.getInstance(branch);
+        String name = employeeManager.getEmployee(userName).getName();
         boolean removedFromEmployees = employeeManager.removeEmployee(userName, branch);
         boolean isUserNameRemoved = CredentialController.removeUser(userName, branch);
 
         if (removedFromEmployees && isUserNameRemoved) {
-            LogController.logEmployeeRemoval(branch, userName);
+            LogController.logEmployeeRemoval(branch, name);
             return true;
         }
         return false;
@@ -23,7 +24,7 @@ public class EmployeeController {
         Employee employee = new Employee(name, employeeId, phoneNumber, accountNumber, branch, role, userName);
         boolean isAdded = employeeManager.addEmployee(employee, branch);
         if (isAdded) {
-            LogController.logEmployeeCreation(branch, employeeId);
+            LogController.logEmployeeCreation(branch, name);
             return true;
         }
         return false;

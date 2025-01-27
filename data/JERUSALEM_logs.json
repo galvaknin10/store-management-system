@@ -1,8 +1,26 @@
 [
   {
-    "timestamp": "2025-01-27T11:40:14.954343100",
+    "timestamp": "2025-01-27T15:18:23.817862300",
     "action": "Initiate Action",
     "details": "log file initiated",
+    "branch": "JERUSALEM"
+  },
+  {
+    "timestamp": "2025-01-27T18:28:50.198301600",
+    "action": "Chat Massege",
+    "details": "From: davidUser4, To: adiUser9, Message: hello",
+    "branch": "JERUSALEM"
+  },
+  {
+    "timestamp": "2025-01-27T18:28:50.204285700",
+    "action": "Chat Massege",
+    "details": "From: adiUser9, To: davidUser4, Message: whats up?",
+    "branch": "JERUSALEM"
+  },
+  {
+    "timestamp": "2025-01-27T18:28:50.209272700",
+    "action": "Chat Massege",
+    "details": "From: davidUser4, To: adiUser9, Message: im fine",
     "branch": "JERUSALEM"
   }
 ]

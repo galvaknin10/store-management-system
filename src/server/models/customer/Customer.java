@@ -16,7 +16,7 @@ public class Customer {
         this.branch = branch;
     }
 
-    public String name() {
+    public String getName() {
         return name;
     }
 

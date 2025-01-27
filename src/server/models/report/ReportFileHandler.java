@@ -10,7 +10,7 @@ import java.util.TreeMap;
 public class ReportFileHandler {
 
     // Save reports to JSON file
-    protected static void saveReportsToFile(Map<String, Report> reports, String branch) {
+    protected synchronized static void saveReportsToFile(Map<String, Report> reports, String branch) {
         String fileName = "data/" + branch + "_reports.json";
         FileHandler.createJsonFile(reports, fileName);
     }

@@ -2,6 +2,8 @@ package server.models.inventory;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
 import server.models.log.LogController;
 import server.models.report.ReportController;
 
@@ -18,10 +20,11 @@ public class InventoryManager {
 
     // Use a HashMap to store products, with the product ID as the key
     private Map<String, Product> inventory;
+    
 
     // Private constructor to prevent external instantiation
     private InventoryManager(String branch) {
-        this.inventory = InventoryFileHandler.loadInventoryFromFile(branch);
+        this.inventory = new ConcurrentHashMap<>(InventoryFileHandler.loadInventoryFromFile(branch));
     }
 
     // Method to initialize instances for a specific branch
@@ -40,7 +43,7 @@ public class InventoryManager {
         }
     }
     
-    protected boolean addProduct(Product product, String branch) {
+    protected synchronized boolean addProduct(Product product, String branch) {
         if (inventory.containsKey(product.getSerialNum())) {
             return false;
         }
@@ -49,7 +52,7 @@ public class InventoryManager {
         return true;
     }
 
-    protected boolean removeProduct(String productId, String branch, int quantity) {
+    protected synchronized boolean removeProduct(String productId, String branch, int quantity) {
         if (inventory.get(productId) == null) {
             return false;
         }
@@ -68,7 +71,7 @@ public class InventoryManager {
         return true;
     }
     
-    public boolean checkOut(Map<String, Integer> cart, String branch) {
+    public synchronized boolean checkOut(Map<String, Integer> cart, String branch) {
         if (cart.isEmpty()) {
             return false;
         }

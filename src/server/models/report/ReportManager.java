@@ -2,6 +2,8 @@ package server.models.report;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
 import server.models.inventory.InventoryManager;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -19,7 +21,7 @@ public class ReportManager {
     private Map<String, Report> reports;
     
     private ReportManager(String branch) {
-        this.reports = ReportFileHandler.loadReportsFromFile(branch);
+        this.reports = new ConcurrentHashMap<>(ReportFileHandler.loadReportsFromFile(branch));
     }
     
     private static void initializeBranch(String branch) {
@@ -38,7 +40,7 @@ public class ReportManager {
     
 
     // Add a new report to the map
-    protected void addReport(Report report, String branch) {
+    protected synchronized void addReport(Report report, String branch) {
         reports.put(report.getDate(), report);
         ReportFileHandler.saveReportsToFile(reports, branch);
     }
@@ -78,7 +80,7 @@ public class ReportManager {
 
 
     // Remove a report by it's year
-    protected boolean removeReport(String day, String branch) {
+    protected synchronized boolean removeReport(String day, String branch) {
         if (reports.remove(day) != null) {
             ReportFileHandler.saveReportsToFile(reports, branch);
             return true;

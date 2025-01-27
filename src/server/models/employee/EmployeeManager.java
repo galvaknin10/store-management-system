@@ -2,6 +2,7 @@ package server.models.employee;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 
 public class EmployeeManager {
@@ -18,9 +19,9 @@ public class EmployeeManager {
     private Map<String, Employee> employees;
 
     private EmployeeManager(String branch) {
-        this.employees = EmployeeFileHandler.loadEmployeesFromFile(branch);
+        this.employees = new ConcurrentHashMap<>(EmployeeFileHandler.loadEmployeesFromFile(branch));
     }
-
+  
     private static void initializeBranch(String branch) {
         EmployeeManager instance = new EmployeeManager(branch);
         instances.put(branch, instance);
@@ -37,7 +38,7 @@ public class EmployeeManager {
     }
 
     // Add an employee
-    protected boolean addEmployee(Employee employee, String branch) {
+    protected synchronized boolean addEmployee(Employee employee, String branch) {
         if (employees.containsKey(employee.getUserName())) {
             return false;
         }
@@ -47,7 +48,7 @@ public class EmployeeManager {
     }
 
     // Remove an employee by ID
-    protected boolean removeEmployee(String userName, String branch) {
+    protected synchronized boolean removeEmployee(String userName, String branch) {
         if (employees.remove(userName) != null) {
             EmployeeFileHandler.saveEmployeesToFile(employees, branch);
             return true;

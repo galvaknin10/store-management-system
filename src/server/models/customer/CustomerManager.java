@@ -2,6 +2,7 @@ package server.models.customer;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 
 public class CustomerManager {
@@ -17,7 +18,7 @@ public class CustomerManager {
     private Map<String, Customer> customers;
     
     private CustomerManager(String branch) {
-        this.customers = CustomerFileHandler.loadCustomersFromFile(branch);
+        this.customers = new ConcurrentHashMap<>(CustomerFileHandler.loadCustomersFromFile(branch));
     }
     
     private static void initializeBranch(String branch) {
@@ -36,7 +37,7 @@ public class CustomerManager {
     
 
     // Add a new customer to the map
-    protected boolean addCustomer(Customer customer, String branch) {
+    protected synchronized boolean addCustomer(Customer customer, String branch) {
         if (customers.containsKey(customer.getIdNumber())) {
             return false; // Customer already exists
         }
@@ -47,7 +48,7 @@ public class CustomerManager {
     
 
     // Remove a customer by their ID number
-    protected boolean removeCustomer(String idNumber, String branch) {
+    protected synchronized boolean removeCustomer(String idNumber, String branch) {
         if (customers.remove(idNumber) != null) {
             CustomerFileHandler.saveCustomersToFile(customers, branch);
             return true;

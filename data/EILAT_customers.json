@@ -1,4 +1,25 @@
 {
+  "050-34534232": {
+    "name": "Odi aviv",
+    "id": "050-34534232",
+    "phoneNumber": "050-34534232",
+    "type": "Returning",
+    "branch": "EILAT"
+  },
+  "308270394": {
+    "name": "Yael Cohen",
+    "id": "308270394",
+    "phoneNumber": "054-1234567",
+    "type": "New",
+    "branch": "EILAT"
+  },
+  "050-342422": {
+    "name": "Shalom Ami",
+    "id": "050-342422",
+    "phoneNumber": "050-342422",
+    "type": "Returning",
+    "branch": "EILAT"
+  },
   "401256987": {
     "name": "Itay Klein",
     "id": "401256987",
@@ -13,11 +34,11 @@
     "type": "VIP",
     "branch": "EILAT"
   },
-  "308270394": {
-    "name": "Yael Cohen",
-    "id": "308270394",
-    "phoneNumber": "054-1234567",
-    "type": "New",
+  "050-324222": {
+    "name": "Odi Aviv",
+    "id": "050-324222",
+    "phoneNumber": "050-324222",
+    "type": "VIP",
     "branch": "EILAT"
   }
 }

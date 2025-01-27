@@ -188,6 +188,8 @@ public class ManagerScreen {
             }
 
             ChatUtils.runChat(scanner, sender, userName, partnerUserName);
+        } else {
+            System.out.println(response.getMessage());
         }
     }
 }

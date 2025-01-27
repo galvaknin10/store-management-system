@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class LogManager {
 
@@ -18,7 +19,7 @@ public class LogManager {
     private List<Log> logs;
 
     private LogManager(String branch) {
-        this.logs = LogFileHandler.loadLogsFromFile(branch);
+        this.logs = new CopyOnWriteArrayList<>(LogFileHandler.loadLogsFromFile(branch));
     }
 
     private static void initializeBranch(String branch) {

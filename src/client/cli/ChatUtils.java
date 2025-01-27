@@ -44,7 +44,6 @@ public class ChatUtils {
 
     public static void runChat(Scanner scanner, RequestSender sender, String userName, String partnerUserName) {
         String sessionId = ChatMessage.generateSessionId(userName, partnerUserName);
-        List<ChatMessage> messageTracker = new CopyOnWriteArrayList<>();
 
         Request request = new Request("ADD_CHAT_SESSION", new Object[]{sessionId, userName, partnerUserName});
         Response response = sender.sendRequest(request);
@@ -78,12 +77,11 @@ public class ChatUtils {
                     break;
                 }
 
-
                 if ("exit".equalsIgnoreCase(message)) { 
                     System.out.println("Exiting chat session...");
                     logChatContent(sender, scanner, sessionId);
-
-                    exitChat(sender, sessionId, partnerUserName);
+                    exitChat(sender, sessionId, userName);
+                    
 
                     System.out.println("You have left the chat with " + partnerUserName + ". Returning to the main menu.");
                     break;
@@ -94,12 +92,10 @@ public class ChatUtils {
 
     
                     if (response.isSuccessful()) {
-                        messageTracker.add(chatMessage);
-
                         request = new Request("UPDATE_TURN", new Object[]{sessionId, userName, partnerUserName});
                         response = sender.sendRequest(request);
 
-                        request = new Request("CONNECT_CHAT_SESSION", new Object[]{sessionId, userName, partnerUserName});
+                        request = new Request("MAKE_PARTNER_ONLINE", new Object[]{sessionId, userName});
                         response = sender.sendRequest(request);
                 
                         lastResponseTime = System.currentTimeMillis();
@@ -114,7 +110,7 @@ public class ChatUtils {
                 if (isPartnerExit(sender, sessionId, partnerUserName)) {
                     break;
                 }
-                
+            
                 request = new Request("IS_PARTNER_TURN", new Object[]{sessionId, partnerUserName});
                 response = sender.sendRequest(request);
     

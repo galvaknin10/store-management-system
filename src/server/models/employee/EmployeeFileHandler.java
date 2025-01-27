@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class EmployeeFileHandler {
 
-    protected static void saveEmployeesToFile(Map<String, Employee> employees, String branch) {
+    protected synchronized static void saveEmployeesToFile(Map<String, Employee> employees, String branch) {
         String fileName = "data/" + branch + "_employees.json";
         FileHandler.createJsonFile(employees, fileName);
     }

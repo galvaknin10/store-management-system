@@ -1,13 +1,4 @@
 {
-  "danUser3": {
-    "name": "Dan",
-    "id": "223456789",
-    "phoneNumber": "052-7654321",
-    "accountNumber": "222222",
-    "branch": "Eilat",
-    "role": "Cashier",
-    "userName": "danUser3"
-  },
   "galUser1": {
     "name": "Gal",
     "id": "123456789",
@@ -25,5 +16,14 @@
     "branch": "EILAT",
     "role": "Salesperson",
     "userName": "adiUser9"
+  },
+  "danUser3": {
+    "name": "Dan",
+    "id": "223456789",
+    "phoneNumber": "052-7654321",
+    "accountNumber": "222222",
+    "branch": "Eilat",
+    "role": "Cashier",
+    "userName": "danUser3"
   }
 }

@@ -12,7 +12,7 @@ import java.util.Map;
 public class CredentialsFileHandler {
 
     // Save credentials to JSON file
-    protected static void saveCredentialsToFile(Map<String, Credentials> credentials, String branch) {
+    protected synchronized static void saveCredentialsToFile(Map<String, Credentials> credentials, String branch) {
         String fileName = "data/" + branch + "_credentials.json";
         FileHandler.createJsonFile(credentials, fileName);
     }
