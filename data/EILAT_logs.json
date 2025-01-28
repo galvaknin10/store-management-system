@@ -106,5 +106,17 @@
     "action": "Chat Massege",
     "details": "From: davidUser4, To: galUser1, Message: im fine.",
     "branch": "EILAT"
+  },
+  {
+    "timestamp": "2025-01-28T21:30:04.818701700",
+    "action": "Chat Massege",
+    "details": "From: galUser1, To: davidUser4, Message: hello",
+    "branch": "EILAT"
+  },
+  {
+    "timestamp": "2025-01-28T21:30:04.837915700",
+    "action": "Chat Massege",
+    "details": "From: davidUser4, To: galUser1, Message: hey",
+    "branch": "EILAT"
   }
 ]

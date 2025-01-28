@@ -1,6 +1,6 @@
 # Store Management System
 
-The **Store Management System** is a client-server application developed in Java. It enables efficient management of store operations across multiple branches through a centralized server and client interface. The system is designed for administrators and branch users to manage employees, inventory, and customer records effectively.
+The **Store Management System** is a robust Java-based client-server application designed to streamline store operations across multiple branches. It enables administrators to efficiently manage employees, inventory, and customers while providing branch users with a tailored interface. The system incorporates intuitive navigation, a built-in chat feature for real-time communication between users, and ensures data persistence through file handling, making it reliable and user-friendly.
 
 ---
 
@@ -226,6 +226,21 @@ store-management-system/
 
 ---
 
+### **Predefined User Credentials**
+
+Below are sample credentials you can use to register and access the application:
+
+| Password     | Username     | Role       | Branch     |
+|--------------|--------------|------------|------------|
+| Strong#99    | galUser1     | Manager    | Eilat      |
+| Qw3rt6y!     | danUser3     | User       | Eilat      |
+| Ab3@12345    | adiUser9     | User       | Eilat      |
+| N0tEasy#     | rioUser2     | Manager    | Jerusalem  |
+| Go0d#Luck    | davidUser4   | User       | Jerusalem  |
+| 123456Ab&    | alonUser7    | User       | Jerusalem  |
+
+---
+
 ## How It Works
 
 1. **Client-Server Communication**:
@@ -254,6 +269,7 @@ This project is licensed under the MIT License. See the LICENSE file for details
 ---
 
 Feel free to explore the code and contribute to the project!
+
 
 
 
