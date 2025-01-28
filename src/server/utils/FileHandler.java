@@ -2,11 +2,9 @@ package server.utils;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
-
 import java.io.*;
 import java.lang.reflect.Type;
-import java.util.Map;
+
 
 public class FileHandler {
 
@@ -27,7 +25,6 @@ public class FileHandler {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         try (FileWriter writer = new FileWriter(filePath)) {
             gson.toJson(data, writer);
-            //System.out.println("File created successfully: " + filePath);
         } catch (IOException e) {
             System.err.println("Error creating JSON file '" + filePath + "': " + e.getMessage());
         }

@@ -3,9 +3,9 @@
     "branch": "Eilat",
     "date": "27/12/2024",
     "salesData": {
-      "Samsung Galaxy S23": 40,
+      "Google Pixel 8": 30,
       "iPhone 14": 50,
-      "Google Pixel 8": 30
+      "Samsung Galaxy S23": 40
     },
     "totalSales": 120
   },
@@ -13,29 +13,28 @@
     "branch": "Eilat",
     "date": "29/12/2024",
     "salesData": {
-      "Samsung Galaxy S23": 55,
+      "Google Pixel 8": 40,
       "iPhone 14": 70,
-      "Google Pixel 8": 40
+      "Samsung Galaxy S23": 55
     },
     "totalSales": 165
+  },
+  "28/01/2025": {
+    "branch": "EILAT",
+    "date": "28/01/2025",
+    "salesData": {
+      "Women\u0027s Winter Coat": 1
+    },
+    "totalSales": 1
   },
   "28/12/2024": {
     "branch": "Eilat",
     "date": "28/12/2024",
     "salesData": {
-      "Samsung Galaxy S23": 50,
+      "Google Pixel 8": 35,
       "iPhone 14": 60,
-      "Google Pixel 8": 35
+      "Samsung Galaxy S23": 50
     },
     "totalSales": 145
-  },
-  "27/01/2025": {
-    "branch": "EILAT",
-    "date": "27/01/2025",
-    "salesData": {
-      "MacBook Air M2": 8,
-      "Samsung Galaxy S23": 5
-    },
-    "totalSales": 13
   }
 }

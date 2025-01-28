@@ -55,7 +55,7 @@ public class CredentialsFileHandler {
         if (!FileHandler.fileExists("data/EILAT_credentials.json")) {
             createDefaultRepo("data/EILAT_credentials.json", Map.of(
                 "galUser1", new Credentials("galUser1", hashPassword("Strong#99"), "Eilat"),
-                "danUser3", new Credentials("danUser3", hashPassword("Qw3rty!@"), "Eilat"),
+                "danUser3", new Credentials("danUser3", hashPassword("Qw3rt6y!"), "Eilat"),
                 "adiUser9", new Credentials("adiUser9", hashPassword("Ab3@12345"), "Eilat")
             ));
         }

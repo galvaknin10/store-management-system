@@ -23,7 +23,6 @@ public class LogController {
         addRecordToLog(branch, "Remove Employee", "Employee removed: " + employeeName);
     }
 
-    // Add a log entry for creating an employee
     public static void logEmployeeCreation(String branch, String employeeName) {
         addRecordToLog(branch, "Create Employee", "Employee created: " + employeeName);
     }
@@ -32,16 +31,13 @@ public class LogController {
         addRecordToLog(branch, "Remove Customer", "Customer created: " + customerName);
     }
 
-    // Add a log entry for creating a customer
     public static void logCustomerCreation(String branch, String customerName) {
         addRecordToLog(branch, "Create Customer", "Customer created: " + customerName);
     }
 
-    // Add a log entry for selling a product
     public static void logProductSale(String branch, String productName, int quantity) {
         addRecordToLog(branch, "Sell Product", "Product sold: " + productName + ", Quantity: " + quantity);
     }
-
 
     // Add a log entry for saving chat content
     public static void logChatContent(ChatMessage message) {

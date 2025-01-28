@@ -47,7 +47,7 @@ public class EmployeeManager {
         return true;
     }
 
-    // Remove an employee by ID
+    // Remove an employee by user name
     protected synchronized boolean removeEmployee(String userName, String branch) {
         if (employees.remove(userName) != null) {
             EmployeeFileHandler.saveEmployeesToFile(employees, branch);

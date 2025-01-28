@@ -2,9 +2,9 @@ package client.utils;
 
 import shared.Request;
 import shared.Response;
-
 import java.io.ObjectOutputStream;
 import java.util.concurrent.BlockingQueue;
+
 
 public class RequestSender {
     private final ObjectOutputStream output;
@@ -17,16 +17,16 @@ public class RequestSender {
 
     public Response sendRequest(Request request) {
         try {
-            //System.out.println("Sending request: " + request.getAction());
+            // Send the request
             output.writeObject(request);
             output.flush();
-
+    
             // Wait for the response from the queue
             return responseQueue.take();
         } catch (Exception e) {
             System.err.println("Error during communication: " + e.getMessage());
             return new Response(false, null, "Communication error.");
         }
-    }
+    }    
 }
 

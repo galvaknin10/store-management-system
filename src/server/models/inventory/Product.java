@@ -7,7 +7,6 @@ public class Product {
     private int quantity;
     private String branch;
 
-    // Constructor
     public Product(String serialNum, String name, double price, int quantity, String branch) {
         this.serialNum = serialNum;
         this.name = name;
@@ -16,7 +15,6 @@ public class Product {
         this.branch = branch;
     }
 
-    // Getter for id
     public String getSerialNum() {
         return serialNum;
     }
@@ -29,12 +27,10 @@ public class Product {
         return price;
     }
 
-    // Getter for quantity
     public int getQuantity() {
         return quantity;
     }
 
-    // Optionally, add setters if needed
     public void adjustQuantity(int soldunits) {
         this.quantity = this.quantity - soldunits;
     }

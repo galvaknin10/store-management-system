@@ -9,11 +9,13 @@ import java.util.Map;
 
 public class CustomerFileHandler {
 
+    // Save credentials to JSON file
     protected synchronized static void saveCustomersToFile(Map<String, Customer> customers, String branch) {
         String fileName = "data/" + branch + "_customers.json";
         FileHandler.createJsonFile(customers, fileName);
     }
 
+    // Load credentials from JSON file
     protected static Map<String, Customer> loadCustomersFromFile(String branch) {
         String fileName = "data/" + branch + "_customers.json";
         Type customerMapType = new TypeToken<Map<String, Customer>>() {}.getType();

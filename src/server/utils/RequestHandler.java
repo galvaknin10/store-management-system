@@ -14,11 +14,9 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.PriorityQueue;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ThreadLocalRandom;
-
 import com.google.gson.Gson;
 
 
@@ -40,27 +38,37 @@ public class RequestHandler implements Runnable {
     @Override
     public void run() {
         try {
+            // Continuously listen for client requests in a loop
             while (true) {
+                // Read an object sent by the client
                 Object requestObj = input.readObject();
+    
+                // Check if the received object is a valid Request
                 if (requestObj instanceof Request request) {
+                    // Handle the request and generate a response
                     Response response = handleRequest(request);
+    
+                    // Send the response back to the client
                     output.writeObject(response);
-                    output.flush();
+                    output.flush(); // Ensure the response is sent immediately
                 } else {
+                    // Log a message if the object is not a valid Request
                     System.out.println("Invalid request from client.");
                 }
             }
         } catch (IOException | ClassNotFoundException e) {
+            // Handle exceptions (e.g., client disconnects or invalid data)
             if (clientInfo != null) {
                 System.err.println(clientInfo.getUsername() + " Disconnected from the system.");
             } else {
-                System.err.println( "Unknown client Disconnected from the system.");
+                System.err.println("Unknown client Disconnected from the system.");
             }
         } finally {
+            // Ensure all resources (streams and socket) are closed properly
             closeStreams();
         }
     }
-    
+        
     private void closeStreams() {
         try {
             if (input != null) input.close();
@@ -110,7 +118,6 @@ public class RequestHandler implements Runnable {
                     return new Response(false, null, "Failed retrieving product. Product not found.");
                 }
             }
-            
             case "ADD_PRODUCT" -> {
                 Object[] productInfo = (Object[]) data;
                 String branch = (String) productInfo[0];
@@ -118,10 +125,11 @@ public class RequestHandler implements Runnable {
                 String name = (String) productInfo[2];
                 double price = (double) productInfo[3];
                 int quantity = (int) productInfo[4];
+
                 if (InventoryController.addProduct(branch, serialNum, name, price, quantity)) {
                     return new Response(true, null, "*Product added successfully*");
                 } else {
-                    return new Response(false, null, "Failed adding product.");
+                    return new Response(false, null, "Failed to add product. Please try again.");
                 }
             }
             case "REMOVE_PRODUCT" -> {
@@ -129,10 +137,11 @@ public class RequestHandler implements Runnable {
                 String branch = (String) productInfo[0];
                 String serialNum = (String) productInfo[1];
                 int quantity = (int) productInfo[2];
+
                 if (InventoryController.removeProduct(branch, serialNum, quantity)) {
                     return new Response(true, null, "*Product removed successfully*");
                 } else {
-                    return new Response(false, null, "Failed removing product, Check quantity or serial number...");
+                    return new Response(false, null, "Failed to remove product, Check quantity or serial number...");
                 }
             }
             case "FIND_CUSTOMER" -> {
@@ -140,10 +149,11 @@ public class RequestHandler implements Runnable {
                 String branch = (String) customerInfo[0];
                 String id = (String) customerInfo[1];
                 CustomerManager customerManager = CustomerManager.getInstance(branch);
+
                 if (customerManager.getCustomer(id) != null) {
                     return new Response(true, null, "*Customer is in the system*");
                 } else {
-                    return new Response(false, null, "Customer was not found in the system.");
+                    return new Response(false, null, "Customer not found in the system.");
                 }
             }
             case "CALCULATE_DISCOUNT" -> {
@@ -153,6 +163,7 @@ public class RequestHandler implements Runnable {
                 double totalSum = (double) customerInfo[2];
                 CustomerManager customerManager = CustomerManager.getInstance(branch);
                 Object[] discountInfo = customerManager.calculateDiscount(customerId, totalSum);
+
                 if (totalSum == 0) {
                     return new Response(false, null, "No products selected. Total sum is 0. Please try again.");
                 } else {
@@ -197,7 +208,7 @@ public class RequestHandler implements Runnable {
                 String branch = (String) credentials[2];
             
                 if (connectedClients.containsKey(username)) {
-                    return new Response(false, null, "Username is already connected.");
+                    return new Response(false, null, "This user is already connected.");
                 }
 
                 CredentialsManager credentialsManager = CredentialsManager.getInstance(branch);
@@ -248,7 +259,7 @@ public class RequestHandler implements Runnable {
                 if (EmployeeController.removeEmployee(branch, userName)) {
                     return new Response(true, null, "*Employee removed successfully!*");
                 } else {
-                    return new Response(false, null, "Failed removing employee");
+                    return new Response(false, null, "Failed to remove employee");
                 }
             }
             case "VIEW_EMPLOYEES" -> {
@@ -299,7 +310,7 @@ public class RequestHandler implements Runnable {
                 CustomerManager customerManager = CustomerManager.getInstance(branch);
                 Map<String, Customer> customers = customerManager.getAllCustomers();
                 if (customers == null || customers.isEmpty()) {
-                    return new Response(false, null, "Failed retrieving inventory.");
+                    return new Response(false, null, "Failed retrieving customers list.");
                 } else {
                     Map<String, Map<String, Object>> customersAsMaps = new HashMap<>();
                     for (Map.Entry<String, Customer> entry : customers.entrySet()) {
@@ -393,9 +404,9 @@ public class RequestHandler implements Runnable {
                 String requesterName = (String) data; // Requester username
                 String partnerUserName = ChatManager.getInstance(connectedClients).startChat(requesterName);
                 if (partnerUserName != null) {
-                    return new Response(true, partnerUserName, "Available client has been found!");
+                    return new Response(true, partnerUserName, "*Available client has been found!*");
                 } else {
-                    return new Response(false, null, "All clients are currently busy, there is a chance that bussy client will return to you, or you can try again later.");
+                    return new Response(false, null, "All clients are currently busy. There's a chance that a busy client will return to you, or you can try again later.");
                 }
             }
             case "ADD_CHAT_SESSION" -> {
@@ -405,7 +416,7 @@ public class RequestHandler implements Runnable {
                 String partnerUserName = (String) massageInfo[2];
                 
                 if (ChatManager.getInstance(connectedClients).confirmChat(sessionId, userName, partnerUserName)) {
-                    return new Response(true, null, "Chat successfully created!");
+                    return new Response(true, null, "*Chat successfully created!*");
                 } else {
                     return new Response(false, null, "Failed creating chat.");
                 }
@@ -418,7 +429,7 @@ public class RequestHandler implements Runnable {
                 if (ChatManager.getInstance(connectedClients).sendMessage(message)) {
                     SessionManager.trackMessages(sessionId, message);
 
-                    return new Response(true, null, "Message sent successfully.");
+                    return new Response(true, null, "*Message sent successfully.*");
                 } else {
                     return new Response(false, null, "Failed to send the message.");
                 }
@@ -427,9 +438,9 @@ public class RequestHandler implements Runnable {
                 String sessionId = (String) data; // Username ending the chat
                 if (ChatManager.getInstance(connectedClients).endChat(sessionId)) {
                     SessionManager.removeStagedChat(sessionId);
-                    return new Response(true, null, "successfully exit the chat.");
+                    return new Response(true, null, "*Successfully exit the chat.*");
                 } else {
-                    return new Response(false, null, "Failed to exit from chat.");
+                    return new Response(false, null, "Failed to exit chat.");
                 }
             }
             case "MAKE_PARTNER_ONLINE" -> {
@@ -438,10 +449,14 @@ public class RequestHandler implements Runnable {
                 String userName = (String) massageInfo[1];
                 ChatSession session = SessionManager.getSession(sessionId);
 
+                if (session == null) {
+                    return new Response(false, null, "Can't reach the partner now");
+                }
+
                 if (userName.equals(session.getPartnerUserName())) {
                     session.setClientBOnline(true);
                 }
-                return new Response(true, null, "B is now online.");
+                return new Response(true, null, "*The partner is now online.*");
             }
             case "IS_PARTNER_TURN" -> {
                 Object[] sessionInfo = (Object[]) data;
@@ -480,7 +495,7 @@ public class RequestHandler implements Runnable {
                 }
 
                 if (partnerOnline) {
-                    return new Response(true, null, "Partner is active in a live chat.");
+                    return new Response(true, null, "*Partner is active in a live chat.*");
                 } else {
                     return new Response(false, null, "Partner is offline.");
                 }
@@ -501,9 +516,9 @@ public class RequestHandler implements Runnable {
                 }
 
                 if (partnerExit) {
-                    return new Response(true, null, "Partner exit.");
+                    return new Response(true, null, "*Partner exit from chat.*");
                 } else {
-                    return new Response(false, null, "Partner didnt exit.");
+                    return new Response(false, null, "Partner didnt exit from chat.");
                 }
             }
             case "UPDATE_TURN" -> {
@@ -512,6 +527,10 @@ public class RequestHandler implements Runnable {
                 String userName = (String) sessionInfo[1];
                 String partnerUserName = (String) sessionInfo[2];
                 ChatSession session = SessionManager.getSession(sessionId);
+
+                if (session == null) {
+                    return new Response(false, null, "Can't reach partner now...");
+                }
 
                 if (userName.equals(session.getUserName()) && partnerUserName.equals(session.getPartnerUserName())) {
                     session.setClientATurn(false);
@@ -530,6 +549,10 @@ public class RequestHandler implements Runnable {
                 String sessionId = (String) sessionInfo[0];
                 String userName = (String) sessionInfo[1];
                 ChatSession session = SessionManager.getSession(sessionId);
+
+                if (session == null) {
+                    return new Response(false, null, "Failed to exit from chat");
+                }
                 
                 if (userName.equals(session.getUserName())) {
                     session.setClientAExit(true);
@@ -539,7 +562,7 @@ public class RequestHandler implements Runnable {
                     session.setClientBExit(true);
                 }
 
-                return new Response(true, null, "State updated.");
+                return new Response(true, null, "You have successfully exited the chat.");
             }
             case "LOG_CHAT" -> {
                 String sessionId = (String) data;
@@ -548,7 +571,7 @@ public class RequestHandler implements Runnable {
                     for (ChatMessage message : chatLog) {
                         LogController.logChatContent(message);
                     }
-                    return new Response(true, null, "Chat logged successfully.");
+                    return new Response(true, null, "*Chat logged successfully.*");
                 } else {
                     return new Response(false, null, "Failed to log chat, chat log is empty.");
                 }
@@ -600,7 +623,7 @@ public class RequestHandler implements Runnable {
                 if (userNameExit) {
                     return new Response(true, null, "Manager interrupt.");
                 } else {
-                    return new Response(false, null, "Manaegr doesnt interrupt.");
+                    return new Response(false, null, "Manaegr doesn't interrupt.");
                 }
             } 
             case "DISCONNECT" -> {

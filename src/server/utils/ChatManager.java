@@ -1,12 +1,12 @@
 package server.utils;
 
 import shared.ChatMessage;
-
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
+
 
 public class ChatManager {
     private static final Queue<String> waitingQueue = new ConcurrentLinkedQueue<>();
@@ -29,7 +29,6 @@ public class ChatManager {
         return instance;
     }
 
-    // Start a chat
     public synchronized String startChat(String userName) {
         ClientInfo userNameInfo = connectedClients.get(userName);
         String userBranch = userNameInfo.getBranch();
@@ -50,7 +49,6 @@ public class ChatManager {
         return null;
     }
 
-    // Confirm chat session
     public synchronized boolean confirmChat(String sessionId, String userName, String partnerUserName) {
         if (userName == null || partnerUserName == null) {
             return false;
@@ -63,7 +61,6 @@ public class ChatManager {
         }
         return true;
     }
-
 
     public synchronized boolean sendMessage(ChatMessage chatMessage) {
         String partnerUserName = chatMessage.getPartnerUserName();

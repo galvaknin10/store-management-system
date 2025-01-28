@@ -1,51 +1,51 @@
 {
   "P005": {
     "serialNum": "P005",
-    "name": "Sony WH-1000XM5 Headphones",
-    "price": 435.99,
+    "name": "Running Shoes",
+    "price": 125.99,
     "quantity": 25,
     "branch": "Eilat"
   },
   "P004": {
     "serialNum": "P004",
-    "name": "Dell XPS 13",
-    "price": 1435.99,
-    "quantity": 10,
+    "name": "Formal Dress Shirt",
+    "price": 75.99000000000001,
+    "quantity": 40,
     "branch": "Eilat"
   },
   "P007": {
     "serialNum": "P007",
-    "name": "JBL Charge 5 Speaker",
-    "price": 185.99,
-    "quantity": 40,
+    "name": "Casual Sneakers",
+    "price": 105.99,
+    "quantity": 35,
     "branch": "Eilat"
   },
   "P006": {
     "serialNum": "P006",
-    "name": "Apple Watch Series 8",
-    "price": 535.99,
-    "quantity": 18,
+    "name": "Summer T-Shirt",
+    "price": 55.989999999999995,
+    "quantity": 60,
     "branch": "Eilat"
   },
   "P001": {
     "serialNum": "P001",
-    "name": "iPhone 14 Pro",
-    "price": 1135.99,
+    "name": "Men\u0027s Leather Jacket",
+    "price": 235.99,
     "quantity": 20,
     "branch": "Eilat"
   },
   "P003": {
     "serialNum": "P003",
-    "name": "MacBook Air M2",
-    "price": 1235.99,
-    "quantity": 9,
+    "name": "Classic Blue Jeans",
+    "price": 85.99000000000001,
+    "quantity": 50,
     "branch": "Eilat"
   },
   "P002": {
     "serialNum": "P002",
-    "name": "Samsung Galaxy S23",
-    "price": 935.99,
-    "quantity": 26,
+    "name": "Women\u0027s Winter Coat",
+    "price": 285.99,
+    "quantity": 29,
     "branch": "Eilat"
   }
 }

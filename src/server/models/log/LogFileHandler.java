@@ -2,11 +2,10 @@ package server.models.log;
 
 import com.google.gson.reflect.TypeToken;
 import server.utils.FileHandler;
-
 import java.lang.reflect.Type;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class LogFileHandler {
 

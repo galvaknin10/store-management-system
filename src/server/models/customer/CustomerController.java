@@ -5,6 +5,7 @@ import server.models.log.LogController;
 
 public class CustomerController {
 
+    // Add a customer to the repository
     public static boolean addCustomer(String branch, String customerId, String name, String phoneNumber, String type) {
         CustomerManager customerManager = CustomerManager.getInstance(branch);
         Customer customer = new Customer(name, customerId, phoneNumber, type, branch);
@@ -16,6 +17,7 @@ public class CustomerController {
         return false;
     }
 
+    // Remove a customer from the repository
     public static boolean removeCustomer(String branch, String customerId) {
         CustomerManager customerManager = CustomerManager.getInstance(branch);
         String name = customerManager.getCustomer(customerId).getName();

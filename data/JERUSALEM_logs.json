@@ -1,26 +1,104 @@
 [
   {
-    "timestamp": "2025-01-27T15:18:23.817862300",
+    "timestamp": "2025-01-28T20:37:57.448227600",
     "action": "Initiate Action",
     "details": "log file initiated",
     "branch": "JERUSALEM"
   },
   {
-    "timestamp": "2025-01-27T18:28:50.198301600",
+    "timestamp": "2025-01-28T20:40:39.180367200",
     "action": "Chat Massege",
     "details": "From: davidUser4, To: adiUser9, Message: hello",
     "branch": "JERUSALEM"
   },
   {
-    "timestamp": "2025-01-27T18:28:50.204285700",
+    "timestamp": "2025-01-28T20:40:39.183387600",
+    "action": "Chat Massege",
+    "details": "From: adiUser9, To: davidUser4, Message: hey",
+    "branch": "JERUSALEM"
+  },
+  {
+    "timestamp": "2025-01-28T20:40:39.186351200",
+    "action": "Chat Massege",
+    "details": "From: davidUser4, To: adiUser9, Message: whats up",
+    "branch": "JERUSALEM"
+  },
+  {
+    "timestamp": "2025-01-28T20:40:39.188347100",
+    "action": "Chat Massege",
+    "details": "From: adiUser9, To: davidUser4, Message: im fine",
+    "branch": "JERUSALEM"
+  },
+  {
+    "timestamp": "2025-01-28T20:45:44.572503300",
+    "action": "Chat Massege",
+    "details": "From: danUser3, To: davidUser4, Message: hello",
+    "branch": "JERUSALEM"
+  },
+  {
+    "timestamp": "2025-01-28T20:45:44.576493900",
+    "action": "Chat Massege",
+    "details": "From: davidUser4, To: danUser3, Message: hey",
+    "branch": "JERUSALEM"
+  },
+  {
+    "timestamp": "2025-01-28T20:46:47.526400400",
+    "action": "Chat Massege",
+    "details": "From: davidUser4, To: adiUser9, Message: hello",
+    "branch": "JERUSALEM"
+  },
+  {
+    "timestamp": "2025-01-28T20:46:47.529393",
     "action": "Chat Massege",
     "details": "From: adiUser9, To: davidUser4, Message: whats up?",
     "branch": "JERUSALEM"
   },
   {
-    "timestamp": "2025-01-27T18:28:50.209272700",
+    "timestamp": "2025-01-28T20:46:47.534379100",
     "action": "Chat Massege",
     "details": "From: davidUser4, To: adiUser9, Message: im fine",
+    "branch": "JERUSALEM"
+  },
+  {
+    "timestamp": "2025-01-28T20:46:47.537370800",
+    "action": "Chat Massege",
+    "details": "From: adiUser9, To: davidUser4, Message: okey",
+    "branch": "JERUSALEM"
+  },
+  {
+    "timestamp": "2025-01-28T20:47:12.550481900",
+    "action": "Chat Massege",
+    "details": "From: davidUser4, To: adiUser9, Message: hey",
+    "branch": "JERUSALEM"
+  },
+  {
+    "timestamp": "2025-01-28T20:47:12.553474",
+    "action": "Chat Massege",
+    "details": "From: adiUser9, To: davidUser4, Message: helo",
+    "branch": "JERUSALEM"
+  },
+  {
+    "timestamp": "2025-01-28T20:47:27.726896800",
+    "action": "Chat Massege",
+    "details": "From: galUser1, To: davidUser4, Message: hey",
+    "branch": "JERUSALEM"
+  },
+  {
+    "timestamp": "2025-01-28T20:47:27.728892100",
+    "action": "Chat Massege",
+    "details": "From: davidUser4, To: galUser1, Message: hey",
+    "branch": "JERUSALEM"
+  },
+  {
+    "timestamp": "2025-01-28T20:47:27.731884200",
+    "action": "Chat Massege",
+    "details": "From: galUser1, To: davidUser4, Message: whats up?",
+    "branch": "JERUSALEM"
+  },
+  {
+    "timestamp": "2025-01-28T20:47:27.734876200",
+    "action": "Chat Massege",
+    "details": "From: davidUser4, To: galUser1, Message: im fine.",
     "branch": "JERUSALEM"
   }
 ]

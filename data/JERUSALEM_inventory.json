@@ -1,51 +1,51 @@
 {
   "P008": {
     "serialNum": "P008",
-    "name": "Apple iPad Pro 12.9",
-    "price": 1235.99,
+    "name": "Kids\u0027 Winter Jacket",
+    "price": 95.99000000000001,
     "quantity": 12,
-    "branch": "Jerusalem"
-  },
-  "P007": {
-    "serialNum": "P007",
-    "name": "Sony Xperia 1 V",
-    "price": 1135.99,
-    "quantity": 5,
-    "branch": "Jerusalem"
-  },
-  "P006": {
-    "serialNum": "P006",
-    "name": "Xiaomi 13 Pro",
-    "price": 785.99,
-    "quantity": 20,
-    "branch": "Jerusalem"
-  },
-  "P005": {
-    "serialNum": "P005",
-    "name": "Asus ROG Phone 7",
-    "price": 1035.99,
-    "quantity": 10,
-    "branch": "Jerusalem"
-  },
-  "P004": {
-    "serialNum": "P004",
-    "name": "OnePlus 11",
-    "price": 735.99,
-    "quantity": 15,
-    "branch": "Jerusalem"
-  },
-  "P003": {
-    "serialNum": "P003",
-    "name": "Google Pixel 8",
-    "price": 835.99,
-    "quantity": 25,
     "branch": "Jerusalem"
   },
   "P009": {
     "serialNum": "P009",
-    "name": "Samsung Galaxy Tab S9",
-    "price": 935.99,
+    "name": "Sports Backpack",
+    "price": 115.99,
     "quantity": 18,
+    "branch": "Jerusalem"
+  },
+  "P003": {
+    "serialNum": "P003",
+    "name": "Men\u0027s Hoodie",
+    "price": 75.99000000000001,
+    "quantity": 25,
+    "branch": "Jerusalem"
+  },
+  "P004": {
+    "serialNum": "P004",
+    "name": "Women\u0027s Maxi Dress",
+    "price": 95.99000000000001,
+    "quantity": 15,
+    "branch": "Jerusalem"
+  },
+  "P005": {
+    "serialNum": "P005",
+    "name": "Leather Handbag",
+    "price": 165.99,
+    "quantity": 10,
+    "branch": "Jerusalem"
+  },
+  "P006": {
+    "serialNum": "P006",
+    "name": "Men\u0027s Formal Trousers",
+    "price": 85.99000000000001,
+    "quantity": 20,
+    "branch": "Jerusalem"
+  },
+  "P007": {
+    "serialNum": "P007",
+    "name": "Women\u0027s High Heels",
+    "price": 125.99,
+    "quantity": 5,
     "branch": "Jerusalem"
   }
 }

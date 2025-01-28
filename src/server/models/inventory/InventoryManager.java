@@ -3,7 +3,6 @@ package server.models.inventory;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-
 import server.models.log.LogController;
 import server.models.report.ReportController;
 

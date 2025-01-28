@@ -8,15 +8,6 @@
     "role": "Manager",
     "userName": "galUser1"
   },
-  "adiUser9": {
-    "name": "Adi",
-    "id": "223456766",
-    "phoneNumber": "052-7654543",
-    "accountNumber": "222253",
-    "branch": "EILAT",
-    "role": "Salesperson",
-    "userName": "adiUser9"
-  },
   "danUser3": {
     "name": "Dan",
     "id": "223456789",
@@ -25,5 +16,14 @@
     "branch": "Eilat",
     "role": "Cashier",
     "userName": "danUser3"
+  },
+  "adiUser9": {
+    "name": "Adi",
+    "id": "223456766",
+    "phoneNumber": "052-7654543",
+    "accountNumber": "222253",
+    "branch": "Eilat",
+    "role": "Salesperson",
+    "userName": "adiUser9"
   }
 }

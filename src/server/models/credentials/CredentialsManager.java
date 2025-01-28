@@ -62,7 +62,6 @@ public class CredentialsManager {
         return false;
     }
 
-
     // Get all credentials
     public Map<String, Credentials> getAllCredentials() {
         return new HashMap<>(credentials);
@@ -77,7 +76,6 @@ public class CredentialsManager {
         }
         return false;
     }
-    
     
     public boolean isValidPassword(String password) {
         // Define password requirements

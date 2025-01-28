@@ -1,74 +1,110 @@
 [
   {
-    "timestamp": "2025-01-27T15:18:23.714720800",
+    "timestamp": "2025-01-28T20:37:57.437254800",
     "action": "Initiate Action",
     "details": "log file initiated",
     "branch": "EILAT"
   },
   {
-    "timestamp": "2025-01-27T15:20:50.717075400",
-    "action": "Create User Name",
-    "details": "User Name created: rotemUser11",
-    "branch": "EILAT"
-  },
-  {
-    "timestamp": "2025-01-27T15:21:32.893358800",
-    "action": "Create Employee",
-    "details": "Employee created: 564785321",
-    "branch": "EILAT"
-  },
-  {
-    "timestamp": "2025-01-27T15:28:11.008848800",
-    "action": "Create Customer",
-    "details": "Customer created: 34456633",
-    "branch": "EILAT"
-  },
-  {
-    "timestamp": "2025-01-27T15:34:40.895181800",
-    "action": "Remove User Name",
-    "details": "User name removed: rotemUser11",
-    "branch": "EILAT"
-  },
-  {
-    "timestamp": "2025-01-27T15:34:40.898173200",
-    "action": "Remove Employee",
-    "details": "Employee removed: Rotem",
-    "branch": "EILAT"
-  },
-  {
-    "timestamp": "2025-01-27T15:35:54.570142400",
-    "action": "Create Customer",
-    "details": "Customer created: Odi Aviv",
-    "branch": "EILAT"
-  },
-  {
-    "timestamp": "2025-01-27T15:40:00.022702900",
-    "action": "Create Customer",
-    "details": "Customer created: Shalom Ami",
-    "branch": "EILAT"
-  },
-  {
-    "timestamp": "2025-01-27T15:43:37.802478300",
+    "timestamp": "2025-01-28T20:39:44.363841300",
     "action": "Sell Product",
-    "details": "Product sold: MacBook Air M2, Quantity: 2",
+    "details": "Product sold: Women\u0027s Winter Coat, Quantity: 1",
     "branch": "EILAT"
   },
   {
-    "timestamp": "2025-01-27T18:28:50.185336600",
+    "timestamp": "2025-01-28T20:40:39.179369500",
     "action": "Chat Massege",
     "details": "From: davidUser4, To: adiUser9, Message: hello",
     "branch": "EILAT"
   },
   {
-    "timestamp": "2025-01-27T18:28:50.200295700",
+    "timestamp": "2025-01-28T20:40:39.181364800",
+    "action": "Chat Massege",
+    "details": "From: adiUser9, To: davidUser4, Message: hey",
+    "branch": "EILAT"
+  },
+  {
+    "timestamp": "2025-01-28T20:40:39.184356600",
+    "action": "Chat Massege",
+    "details": "From: davidUser4, To: adiUser9, Message: whats up",
+    "branch": "EILAT"
+  },
+  {
+    "timestamp": "2025-01-28T20:40:39.187349900",
+    "action": "Chat Massege",
+    "details": "From: adiUser9, To: davidUser4, Message: im fine",
+    "branch": "EILAT"
+  },
+  {
+    "timestamp": "2025-01-28T20:45:44.559540200",
+    "action": "Chat Massege",
+    "details": "From: danUser3, To: davidUser4, Message: hello",
+    "branch": "EILAT"
+  },
+  {
+    "timestamp": "2025-01-28T20:45:44.574499300",
+    "action": "Chat Massege",
+    "details": "From: davidUser4, To: danUser3, Message: hey",
+    "branch": "EILAT"
+  },
+  {
+    "timestamp": "2025-01-28T20:46:47.525402300",
+    "action": "Chat Massege",
+    "details": "From: davidUser4, To: adiUser9, Message: hello",
+    "branch": "EILAT"
+  },
+  {
+    "timestamp": "2025-01-28T20:46:47.527398400",
     "action": "Chat Massege",
     "details": "From: adiUser9, To: davidUser4, Message: whats up?",
     "branch": "EILAT"
   },
   {
-    "timestamp": "2025-01-27T18:28:50.206280700",
+    "timestamp": "2025-01-28T20:46:47.532383900",
     "action": "Chat Massege",
     "details": "From: davidUser4, To: adiUser9, Message: im fine",
+    "branch": "EILAT"
+  },
+  {
+    "timestamp": "2025-01-28T20:46:47.536373",
+    "action": "Chat Massege",
+    "details": "From: adiUser9, To: davidUser4, Message: okey",
+    "branch": "EILAT"
+  },
+  {
+    "timestamp": "2025-01-28T20:47:12.549483200",
+    "action": "Chat Massege",
+    "details": "From: davidUser4, To: adiUser9, Message: hey",
+    "branch": "EILAT"
+  },
+  {
+    "timestamp": "2025-01-28T20:47:12.551478800",
+    "action": "Chat Massege",
+    "details": "From: adiUser9, To: davidUser4, Message: helo",
+    "branch": "EILAT"
+  },
+  {
+    "timestamp": "2025-01-28T20:47:27.724901800",
+    "action": "Chat Massege",
+    "details": "From: galUser1, To: davidUser4, Message: hey",
+    "branch": "EILAT"
+  },
+  {
+    "timestamp": "2025-01-28T20:47:27.727894500",
+    "action": "Chat Massege",
+    "details": "From: davidUser4, To: galUser1, Message: hey",
+    "branch": "EILAT"
+  },
+  {
+    "timestamp": "2025-01-28T20:47:27.730886500",
+    "action": "Chat Massege",
+    "details": "From: galUser1, To: davidUser4, Message: whats up?",
+    "branch": "EILAT"
+  },
+  {
+    "timestamp": "2025-01-28T20:47:27.733878800",
+    "action": "Chat Massege",
+    "details": "From: davidUser4, To: galUser1, Message: im fine.",
     "branch": "EILAT"
   }
 ]

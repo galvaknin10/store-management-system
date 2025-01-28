@@ -2,9 +2,8 @@ package client.utils;
 
 import shared.*;
 import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingQueue;
+
 
 public class MessageDispatcher implements Runnable {
     private final ObjectInputStream input;
@@ -17,14 +16,12 @@ public class MessageDispatcher implements Runnable {
         this.responseQueue = responseQueue;
         this.chatQueue = chatQueue;
     }
-
     @Override
     public void run() {
         try {
-
             while (running) {
                 Object obj = input.readObject();
-
+    
                 // Dispatch object to the appropriate queue
                 if (obj instanceof Response response) {
                     responseQueue.put(response);
@@ -40,7 +37,7 @@ public class MessageDispatcher implements Runnable {
             }
         }
     }
-
+    
     public void stop() {
         running = false;
     }

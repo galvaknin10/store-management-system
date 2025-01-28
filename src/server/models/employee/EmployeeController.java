@@ -6,6 +6,7 @@ import server.models.credentials.CredentialController;
 
 public class EmployeeController {
 
+    // Add a employee to the repository
     public static boolean removeEmployee(String branch, String userName) {
         EmployeeManager employeeManager = EmployeeManager.getInstance(branch);
         String name = employeeManager.getEmployee(userName).getName();
@@ -19,6 +20,7 @@ public class EmployeeController {
         return false;
     }
 
+    // Remove employee from the repository
     public static boolean addEmployee(String branch, String employeeId, String name, String phoneNumber, String accountNumber, String role, String userName) {
         EmployeeManager employeeManager = EmployeeManager.getInstance(branch);
         Employee employee = new Employee(name, employeeId, phoneNumber, accountNumber, branch, role, userName);

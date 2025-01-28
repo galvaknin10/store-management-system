@@ -1,6 +1,5 @@
 package server.models.employee;
 
-import java.io.Serializable;
 
 public class Employee {
     private String name;    

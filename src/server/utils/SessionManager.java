@@ -3,9 +3,7 @@ package server.utils;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.PriorityQueue;
 import java.util.concurrent.ConcurrentHashMap;
-
 import shared.ChatMessage;
 
 
@@ -13,13 +11,10 @@ public class SessionManager {
     private static final ConcurrentHashMap<String, ChatSession> activeChatSessions = new ConcurrentHashMap<>();
     private static final ConcurrentHashMap<String, List<ChatMessage>> chatLogs = new ConcurrentHashMap<>();
 
-
-    // Get a session
     public static ChatSession getSession(String sessionId) {
         return activeChatSessions.get(sessionId);
     }
 
-    // Add a session
     public static boolean addSession(String sessionId, ChatSession session) {
         if (activeChatSessions.containsKey(sessionId)) {
             return false;
@@ -28,7 +23,6 @@ public class SessionManager {
         return true;
     }
 
-    // Remove a session
     public static boolean removeSession(String sessionId) {
         return activeChatSessions.remove(sessionId) != null;
     }
@@ -48,7 +42,6 @@ public class SessionManager {
         });
     }
     
-
     public static List<ChatMessage> getSortedChatLog(String sessionId) {
         List<ChatMessage> chatLog = chatLogs.get(sessionId);
         if (chatLog == null) {
