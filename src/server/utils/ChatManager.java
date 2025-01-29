@@ -9,7 +9,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 
 public class ChatManager {
-    private static final Queue<String> waitingQueue = new ConcurrentLinkedQueue<>();
+    private static final Queue<String[]> waitingQueue = new ConcurrentLinkedQueue<>();
     private static ChatManager instance;
     private final Object queueLock = new Object();
     private final Object activeChatLock = new Object();
@@ -45,7 +45,7 @@ public class ChatManager {
         }
 
         // No clients available, add to waiting queue
-        waitingQueue.add(userName);
+        waitingQueue.add(new String[]{userName, userBranch});
         return null;
     }
 
@@ -91,25 +91,34 @@ public class ChatManager {
     }
     
     private void monitorQueue() {
-        while (true) {
+        while (!Thread.currentThread().isInterrupted()) {
             try {
                 Thread.sleep(1000); // Poll every second
-                String userName;
+                String[] userNameInfo;
     
                 synchronized (queueLock) {
-                    userName = waitingQueue.peek();
+                    userNameInfo = waitingQueue.peek(); // Get the next user in the queue
                 }
     
-                if (userName != null) {
+                if (userNameInfo != null) {
+                    String userName = userNameInfo[0];
+                    String userBranch = userNameInfo[1];
+    
                     for (Map.Entry<String, ClientInfo> entry : connectedClients.entrySet()) {
                         String partnerUserName = entry.getKey();
                         ClientInfo partnerInfo = entry.getValue();
+                        String partnerBranch = partnerInfo.getBranch();
     
                         synchronized (activeChatLock) {
-                            if (!partnerUserName.equals(userName) && partnerInfo.isAvailable()) {
-                                ChatMessage chatMessage = new ChatMessage(userName, partnerUserName, userName + " is trying to connect with you. Do you want to create a chat session?");
+                            if (!partnerUserName.equals(userName) && partnerInfo.isAvailable() && !partnerBranch.equals(userBranch)) {
+                                ChatMessage chatMessage = new ChatMessage(userName, partnerUserName,
+                                        userName + " is trying to connect with you. Do you want to create a chat session?");
                                 sendMessage(chatMessage);
-                                waitingQueue.poll();
+    
+                                // Remove user from queue after a successful match
+                                synchronized (queueLock) {
+                                    waitingQueue.poll();
+                                }
                                 break;
                             }
                         }
@@ -117,7 +126,10 @@ public class ChatManager {
                 }
             } catch (InterruptedException e) {
                 System.err.println("Queue monitor interrupted: " + e.getMessage());
+                Thread.currentThread().interrupt(); // Preserve interrupt status
+            } catch (Exception e) {
+                System.err.println("Error in queue monitoring: " + e.getMessage());
             }
         }
-    }
+    }    
 }

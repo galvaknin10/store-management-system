@@ -1,12 +1,12 @@
 {
-  "galUser1": {
-    "name": "Gal",
-    "id": "123456789",
-    "phoneNumber": "050-1234567",
-    "accountNumber": "111111",
+  "harelUser3": {
+    "name": "Harel",
+    "id": "223456789",
+    "phoneNumber": "052-7654321",
+    "accountNumber": "222222",
     "branch": "Eilat",
-    "role": "Manager",
-    "userName": "galUser1"
+    "role": "Cashier",
+    "userName": "harelUser3"
   },
   "adiUser9": {
     "name": "Adi",
@@ -17,13 +17,13 @@
     "role": "Salesperson",
     "userName": "adiUser9"
   },
-  "harelUser3": {
-    "name": "Harel",
-    "id": "223456789",
-    "phoneNumber": "052-7654321",
-    "accountNumber": "222222",
+  "galUser1": {
+    "name": "Gal",
+    "id": "123456789",
+    "phoneNumber": "050-1234567",
+    "accountNumber": "111111",
     "branch": "Eilat",
-    "role": "Cashier",
-    "userName": "harelUser3"
+    "role": "Manager",
+    "userName": "galUser1"
   }
 }
