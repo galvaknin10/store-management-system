@@ -233,11 +233,11 @@ Below are sample credentials you can use to register and access the application:
 | Password     | Username     | Role       | Branch     |
 |--------------|--------------|------------|------------|
 | Strong#99    | galUser1     | Manager    | Eilat      |
-| Qw3rt6y!     | danUser3     | User       | Eilat      |
+| Qw3rt6y!     | harelUser3   | User       | Eilat      |
 | Ab3@12345    | adiUser9     | User       | Eilat      |
-| N0tEasy#     | rioUser2     | Manager    | Jerusalem  |
+| N0tEasy#     | naorUser2    | Manager    | Jerusalem  |
 | Go0d#Luck    | davidUser4   | User       | Jerusalem  |
-| 123456Ab&    | alonUser7    | User       | Jerusalem  |
+| 123456Ab&    | DennisUser7  | User       | Jerusalem  |
 
 ---
 
