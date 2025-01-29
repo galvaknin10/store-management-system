@@ -1,32 +1,32 @@
 {
+  "27/12/2024": {
+    "branch": "Eilat",
+    "date": "27/12/2024",
+    "salesData": {
+      "Men\u0027s Leather Jacket": 20,
+      "Classic Blue Jeans": 50,
+      "Women\u0027s Winter Coat": 30
+    },
+    "totalSales": 100
+  },
   "28/12/2024": {
     "branch": "Eilat",
     "date": "28/12/2024",
     "salesData": {
-      "Samsung Galaxy S23": 50,
-      "Google Pixel 8": 35,
-      "iPhone 14": 60
+      "Formal Dress Shirt": 40,
+      "Summer T-Shirt": 60,
+      "Running Shoes": 25
     },
-    "totalSales": 145
+    "totalSales": 125
   },
   "29/12/2024": {
     "branch": "Eilat",
     "date": "29/12/2024",
     "salesData": {
-      "Samsung Galaxy S23": 55,
-      "Google Pixel 8": 40,
-      "iPhone 14": 70
+      "Men\u0027s Leather Jacket": 18,
+      "Casual Sneakers": 35,
+      "Women\u0027s Winter Coat": 28
     },
-    "totalSales": 165
-  },
-  "27/12/2024": {
-    "branch": "Eilat",
-    "date": "27/12/2024",
-    "salesData": {
-      "Samsung Galaxy S23": 40,
-      "Google Pixel 8": 30,
-      "iPhone 14": 50
-    },
-    "totalSales": 120
+    "totalSales": 81
   }
 }

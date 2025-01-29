@@ -134,7 +134,7 @@ public class ReportScreen {
           .append("Branch: ").append(report.get("branch")).append("\n")
           .append("Date: ").append(report.get("date")).append("\n")
           .append("───────────────────────────────────────\n")
-          .append("Devices                  Total Sales\n")
+          .append("Items                  Total Sales\n")
           .append("───────────────────────────────────────\n");
     
         // Use Double instead of Integer
@@ -144,7 +144,7 @@ public class ReportScreen {
         }
     
         st.append("────────────────────────────────────────\n")
-          .append("Total Sales for Branch: ").append(String.format("%.0f", report.get("totalSales"))).append(" Devices\n");
+          .append("Total Sales for Branch: ").append(String.format("%.0f", report.get("totalSales"))).append(" Items\n");
     
         System.out.println(st);
     }    

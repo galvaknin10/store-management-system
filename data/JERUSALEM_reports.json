@@ -1,32 +1,32 @@
 {
+  "27/12/2024": {
+    "branch": "Jerusalem",
+    "date": "27/12/2024",
+    "salesData": {
+      "Women\u0027s Maxi Dress": 15,
+      "Leather Handbag": 10,
+      "Men\u0027s Hoodie": 25
+    },
+    "totalSales": 50
+  },
   "28/12/2024": {
     "branch": "Jerusalem",
     "date": "28/12/2024",
     "salesData": {
-      "Samsung Galaxy S23": 40,
-      "OnePlus 11": 30,
-      "iPhone 14": 50
+      "Men\u0027s Formal Trousers": 20,
+      "Women\u0027s High Heels": 5,
+      "Kids\u0027 Winter Jacket": 12
     },
-    "totalSales": 120
+    "totalSales": 37
   },
   "29/12/2024": {
     "branch": "Jerusalem",
     "date": "29/12/2024",
     "salesData": {
-      "Samsung Galaxy S23": 45,
-      "OnePlus 11": 35,
-      "iPhone 14": 55
+      "Women\u0027s Maxi Dress": 12,
+      "Sports Backpack": 18,
+      "Men\u0027s Hoodie": 22
     },
-    "totalSales": 135
-  },
-  "27/12/2024": {
-    "branch": "Jerusalem",
-    "date": "27/12/2024",
-    "salesData": {
-      "Samsung Galaxy S23": 35,
-      "OnePlus 11": 25,
-      "iPhone 14": 45
-    },
-    "totalSales": 105
+    "totalSales": 52
   }
 }

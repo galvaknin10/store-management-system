@@ -1,4 +1,13 @@
 {
+  "naorUser2": {
+    "name": "Naor",
+    "id": "523456789",
+    "phoneNumber": "055-3216549",
+    "accountNumber": "555555",
+    "branch": "Jerusalem",
+    "role": "Manager",
+    "userName": "naorUser2"
+  },
   "dennisUser7": {
     "name": "Dennis",
     "id": "623456446",
@@ -16,14 +25,5 @@
     "branch": "Jerusalem",
     "role": "Salesperson",
     "userName": "davidUser4"
-  },
-  "naorUser2": {
-    "name": "Naor",
-    "id": "523456789",
-    "phoneNumber": "055-3216549",
-    "accountNumber": "555555",
-    "branch": "Jerusalem",
-    "role": "Manager",
-    "userName": "naorUser2"
   }
 }

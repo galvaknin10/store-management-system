@@ -1,18 +1,4 @@
 {
-  "317852963": {
-    "name": "Noa Bar",
-    "id": "317852963",
-    "phoneNumber": "053-9876543",
-    "type": "Returning",
-    "branch": "EILAT"
-  },
-  "401256987": {
-    "name": "Itay Klein",
-    "id": "401256987",
-    "phoneNumber": "050-6549873",
-    "type": "New",
-    "branch": "EILAT"
-  },
   "308270394": {
     "name": "Yael Cohen",
     "id": "308270394",
@@ -25,6 +11,20 @@
     "id": "212345678",
     "phoneNumber": "052-7654321",
     "type": "VIP",
+    "branch": "EILAT"
+  },
+  "317852963": {
+    "name": "Noa Bar",
+    "id": "317852963",
+    "phoneNumber": "053-9876543",
+    "type": "Returning",
+    "branch": "EILAT"
+  },
+  "401256987": {
+    "name": "Itay Klein",
+    "id": "401256987",
+    "phoneNumber": "050-6549873",
+    "type": "New",
     "branch": "EILAT"
   }
 }
