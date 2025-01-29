@@ -42,7 +42,7 @@ public class ManagerScreen {
                     case 7 -> displayLogs(scanner, sender);
                     case 8 -> {
                         ScreensUtils.logOut(sender, userName);
-                        System.out.println("\nExiting the system, goodbye " + userName + " ✨");
+                        System.out.println("\nExiting the system, goodbye " + userName);
                         return false;
                     }
                     default -> System.out.println("Invalid choice. Please enter a number between 1 and 8.");

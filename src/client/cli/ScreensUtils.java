@@ -52,7 +52,7 @@ public class ScreensUtils {
         Response response = sender.sendRequest(disconnectRequest);
     
         if (response.isSuccessful()) {
-            System.out.println("You have successfully logged out, " + userName + ".");
+            System.out.println("You have successfully logged out.");
         } else {
             System.out.println("Error logging out: " + response.getMessage());
         }

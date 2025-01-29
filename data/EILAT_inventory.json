@@ -1,37 +1,9 @@
 {
-  "P001": {
-    "serialNum": "P001",
-    "name": "Men\u0027s Leather Jacket",
-    "price": 235.99,
-    "quantity": 20,
-    "branch": "Eilat"
-  },
-  "P002": {
-    "serialNum": "P002",
-    "name": "Women\u0027s Winter Coat",
-    "price": 285.99,
-    "quantity": 30,
-    "branch": "Eilat"
-  },
-  "P003": {
-    "serialNum": "P003",
-    "name": "Classic Blue Jeans",
-    "price": 85.99000000000001,
-    "quantity": 50,
-    "branch": "Eilat"
-  },
-  "P004": {
-    "serialNum": "P004",
-    "name": "Formal Dress Shirt",
-    "price": 75.99000000000001,
-    "quantity": 40,
-    "branch": "Eilat"
-  },
-  "P005": {
-    "serialNum": "P005",
-    "name": "Running Shoes",
-    "price": 125.99,
-    "quantity": 25,
+  "P007": {
+    "serialNum": "P007",
+    "name": "Casual Sneakers",
+    "price": 105.99,
+    "quantity": 35,
     "branch": "Eilat"
   },
   "P006": {
@@ -41,11 +13,39 @@
     "quantity": 60,
     "branch": "Eilat"
   },
-  "P007": {
-    "serialNum": "P007",
-    "name": "Casual Sneakers",
-    "price": 105.99,
-    "quantity": 35,
+  "P005": {
+    "serialNum": "P005",
+    "name": "Running Shoes",
+    "price": 125.99,
+    "quantity": 25,
+    "branch": "Eilat"
+  },
+  "P004": {
+    "serialNum": "P004",
+    "name": "Formal Dress Shirt",
+    "price": 75.99000000000001,
+    "quantity": 40,
+    "branch": "Eilat"
+  },
+  "P003": {
+    "serialNum": "P003",
+    "name": "Classic Blue Jeans",
+    "price": 85.99000000000001,
+    "quantity": 50,
+    "branch": "Eilat"
+  },
+  "P002": {
+    "serialNum": "P002",
+    "name": "Women\u0027s Winter Coat",
+    "price": 285.99,
+    "quantity": 30,
+    "branch": "Eilat"
+  },
+  "P001": {
+    "serialNum": "P001",
+    "name": "Men\u0027s Leather Jacket",
+    "price": 235.99,
+    "quantity": 20,
     "branch": "Eilat"
   }
 }

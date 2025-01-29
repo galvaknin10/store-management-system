@@ -628,7 +628,8 @@ public class RequestHandler implements Runnable {
             } 
             case "DISCONNECT" -> {
                 String userName = (String) data;
-                if (userName != null) {
+
+                if (connectedClients.contains(userName)) {
                     connectedClients.remove(userName);
                     System.out.println(clientInfo.getUsername() + " Logout from the system");
                 } else {

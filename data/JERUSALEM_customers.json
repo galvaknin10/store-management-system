@@ -1,16 +1,9 @@
 {
-  "555666777": {
-    "name": "Tamar Shamir",
-    "id": "555666777",
-    "phoneNumber": "055-3216549",
-    "type": "New",
-    "branch": "Jerusalem"
-  },
-  "888999000": {
-    "name": "Yossi Peretz",
-    "id": "888999000",
-    "phoneNumber": "056-9517538",
-    "type": "VIP",
+  "321321321": {
+    "name": "Nadav Ben-David",
+    "id": "321321321",
+    "phoneNumber": "058-1478523",
+    "type": "Returning",
     "branch": "Jerusalem"
   },
   "123123123": {
@@ -20,11 +13,18 @@
     "type": "VIP",
     "branch": "Jerusalem"
   },
-  "321321321": {
-    "name": "Nadav Ben-David",
-    "id": "321321321",
-    "phoneNumber": "058-1478523",
-    "type": "Returning",
+  "888999000": {
+    "name": "Yossi Peretz",
+    "id": "888999000",
+    "phoneNumber": "056-9517538",
+    "type": "VIP",
+    "branch": "Jerusalem"
+  },
+  "555666777": {
+    "name": "Tamar Shamir",
+    "id": "555666777",
+    "phoneNumber": "055-3216549",
+    "type": "New",
     "branch": "Jerusalem"
   }
 }

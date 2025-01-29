@@ -1,37 +1,9 @@
 {
-  "P003": {
-    "serialNum": "P003",
-    "name": "Men\u0027s Hoodie",
-    "price": 75.99000000000001,
-    "quantity": 25,
-    "branch": "Jerusalem"
-  },
-  "P004": {
-    "serialNum": "P004",
-    "name": "Women\u0027s Maxi Dress",
-    "price": 95.99000000000001,
-    "quantity": 15,
-    "branch": "Jerusalem"
-  },
-  "P005": {
-    "serialNum": "P005",
-    "name": "Leather Handbag",
-    "price": 165.99,
-    "quantity": 10,
-    "branch": "Jerusalem"
-  },
-  "P006": {
-    "serialNum": "P006",
-    "name": "Men\u0027s Formal Trousers",
-    "price": 85.99000000000001,
-    "quantity": 20,
-    "branch": "Jerusalem"
-  },
-  "P007": {
-    "serialNum": "P007",
-    "name": "Women\u0027s High Heels",
-    "price": 125.99,
-    "quantity": 5,
+  "P009": {
+    "serialNum": "P009",
+    "name": "Sports Backpack",
+    "price": 115.99,
+    "quantity": 18,
     "branch": "Jerusalem"
   },
   "P008": {
@@ -41,11 +13,39 @@
     "quantity": 12,
     "branch": "Jerusalem"
   },
-  "P009": {
-    "serialNum": "P009",
-    "name": "Sports Backpack",
-    "price": 115.99,
-    "quantity": 18,
+  "P007": {
+    "serialNum": "P007",
+    "name": "Women\u0027s High Heels",
+    "price": 125.99,
+    "quantity": 5,
+    "branch": "Jerusalem"
+  },
+  "P006": {
+    "serialNum": "P006",
+    "name": "Men\u0027s Formal Trousers",
+    "price": 85.99000000000001,
+    "quantity": 20,
+    "branch": "Jerusalem"
+  },
+  "P005": {
+    "serialNum": "P005",
+    "name": "Leather Handbag",
+    "price": 165.99,
+    "quantity": 10,
+    "branch": "Jerusalem"
+  },
+  "P004": {
+    "serialNum": "P004",
+    "name": "Women\u0027s Maxi Dress",
+    "price": 95.99000000000001,
+    "quantity": 15,
+    "branch": "Jerusalem"
+  },
+  "P003": {
+    "serialNum": "P003",
+    "name": "Men\u0027s Hoodie",
+    "price": 75.99000000000001,
+    "quantity": 25,
     "branch": "Jerusalem"
   }
 }

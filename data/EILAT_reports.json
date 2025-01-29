@@ -1,32 +1,32 @@
 {
-  "27/12/2024": {
+  "29/12/2024": {
     "branch": "Eilat",
-    "date": "27/12/2024",
+    "date": "29/12/2024",
     "salesData": {
-      "Men\u0027s Leather Jacket": 20,
-      "Classic Blue Jeans": 50,
-      "Women\u0027s Winter Coat": 30
+      "Women\u0027s Winter Coat": 28,
+      "Casual Sneakers": 35,
+      "Men\u0027s Leather Jacket": 18
     },
-    "totalSales": 100
+    "totalSales": 81
   },
   "28/12/2024": {
     "branch": "Eilat",
     "date": "28/12/2024",
     "salesData": {
-      "Formal Dress Shirt": 40,
+      "Running Shoes": 25,
       "Summer T-Shirt": 60,
-      "Running Shoes": 25
+      "Formal Dress Shirt": 40
     },
     "totalSales": 125
   },
-  "29/12/2024": {
+  "27/12/2024": {
     "branch": "Eilat",
-    "date": "29/12/2024",
+    "date": "27/12/2024",
     "salesData": {
-      "Men\u0027s Leather Jacket": 18,
-      "Casual Sneakers": 35,
-      "Women\u0027s Winter Coat": 28
+      "Women\u0027s Winter Coat": 30,
+      "Classic Blue Jeans": 50,
+      "Men\u0027s Leather Jacket": 20
     },
-    "totalSales": 81
+    "totalSales": 100
   }
 }
