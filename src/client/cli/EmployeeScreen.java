@@ -28,7 +28,6 @@ public class EmployeeScreen {
                 switch (choice) {
                     case 1 -> {
                         removeEmployee(scanner, sender, branch);
-                        System.out.println("Employee removed successfully!");
                         return; // Exit after removing employee
                     }
                     case 2 -> {

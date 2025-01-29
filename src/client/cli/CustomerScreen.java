@@ -28,12 +28,10 @@ public class CustomerScreen {
                 switch (choice) {
                     case 1 -> {
                         createNewCustomer(scanner, sender, branch);
-                        System.out.println("Customer added successfully!");
                         return; // Exit after adding a customer
                     }
                     case 2 -> {
                         removeCustomer(scanner, sender, branch);
-                        System.out.println("Customer removed successfully!");
                         return; // Exit after removing a customer
                     }
                     case 3 -> {

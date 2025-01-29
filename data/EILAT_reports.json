@@ -1,4 +1,14 @@
 {
+  "27/12/2024": {
+    "branch": "Eilat",
+    "date": "27/12/2024",
+    "salesData": {
+      "Women\u0027s Winter Coat": 30,
+      "Classic Blue Jeans": 50,
+      "Men\u0027s Leather Jacket": 20
+    },
+    "totalSales": 100
+  },
   "29/12/2024": {
     "branch": "Eilat",
     "date": "29/12/2024",
@@ -18,15 +28,5 @@
       "Formal Dress Shirt": 40
     },
     "totalSales": 125
-  },
-  "27/12/2024": {
-    "branch": "Eilat",
-    "date": "27/12/2024",
-    "salesData": {
-      "Women\u0027s Winter Coat": 30,
-      "Classic Blue Jeans": 50,
-      "Men\u0027s Leather Jacket": 20
-    },
-    "totalSales": 100
   }
 }

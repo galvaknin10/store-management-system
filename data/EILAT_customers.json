@@ -1,4 +1,11 @@
 {
+  "308270394": {
+    "name": "Yael Cohen",
+    "id": "308270394",
+    "phoneNumber": "054-1234567",
+    "type": "New",
+    "branch": "EILAT"
+  },
   "401256987": {
     "name": "Itay Klein",
     "id": "401256987",
@@ -18,13 +25,6 @@
     "id": "212345678",
     "phoneNumber": "052-7654321",
     "type": "VIP",
-    "branch": "EILAT"
-  },
-  "308270394": {
-    "name": "Yael Cohen",
-    "id": "308270394",
-    "phoneNumber": "054-1234567",
-    "type": "New",
     "branch": "EILAT"
   }
 }

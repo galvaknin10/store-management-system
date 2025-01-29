@@ -28,12 +28,10 @@ public class InventoryScreen {
                 switch (choice) {
                     case 1 -> {
                         addProduct(scanner, sender, branch);
-                        System.out.println("Product added successfully!");
                         return; // Exit after adding product
                     }
                     case 2 -> {
                         removeProduct(scanner, sender, branch);
-                        System.out.println("Product removed successfully!");
                         return; // Exit after removing product
                     }
                     case 3 -> {

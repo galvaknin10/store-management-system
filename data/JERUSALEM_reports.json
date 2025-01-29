@@ -1,4 +1,14 @@
 {
+  "27/12/2024": {
+    "branch": "Jerusalem",
+    "date": "27/12/2024",
+    "salesData": {
+      "Men\u0027s Hoodie": 25,
+      "Leather Handbag": 10,
+      "Women\u0027s Maxi Dress": 15
+    },
+    "totalSales": 50
+  },
   "29/12/2024": {
     "branch": "Jerusalem",
     "date": "29/12/2024",
@@ -13,20 +23,10 @@
     "branch": "Jerusalem",
     "date": "28/12/2024",
     "salesData": {
+      "Men\u0027s Formal Trousers": 20,
       "Kids\u0027 Winter Jacket": 12,
-      "Women\u0027s High Heels": 5,
-      "Men\u0027s Formal Trousers": 20
+      "Women\u0027s High Heels": 5
     },
     "totalSales": 37
-  },
-  "27/12/2024": {
-    "branch": "Jerusalem",
-    "date": "27/12/2024",
-    "salesData": {
-      "Men\u0027s Hoodie": 25,
-      "Leather Handbag": 10,
-      "Women\u0027s Maxi Dress": 15
-    },
-    "totalSales": 50
   }
 }
