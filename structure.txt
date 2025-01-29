@@ -1,0 +1,185 @@
+Folder PATH listing for volume OS
+Volume serial number is E854-B2AF
+C:.
+³   README.md
+³   run-client.bat
+³   run-server.bat
+³   structure.txt
+³   
+ÃÄÄÄ.vscode
+³       launch.json
+³       settings.json
+³       
+ÃÄÄÄbin
+³   ÃÄÄÄclient
+³   ³   ³   Client.class
+³   ³   ³   
+³   ³   ÃÄÄÄcli
+³   ³   ³       ChatUtils.class
+³   ³   ³       CustomerScreen.class
+³   ³   ³       EmployeeScreen.class
+³   ³   ³       InventoryScreen.class
+³   ³   ³       LoginScreen.class
+³   ³   ³       ManagerScreen.class
+³   ³   ³       RegisterUtils.class
+³   ³   ³       ReportScreen.class
+³   ³   ³       ScreensUtils.class
+³   ³   ³       TransactionScreen.class
+³   ³   ³       UserScreen.class
+³   ³   ³       
+³   ³   ÀÄÄÄutils
+³   ³           ChatListener.class
+³   ³           MessageDispatcher.class
+³   ³           RequestSender.class
+³   ³           
+³   ÃÄÄÄserver
+³   ³   ³   Server.class
+³   ³   ³   
+³   ³   ÃÄÄÄmodels
+³   ³   ³   ÃÄÄÄcredentials
+³   ³   ³   ³       CredentialController.class
+³   ³   ³   ³       Credentials.class
+³   ³   ³   ³       CredentialsFileHandler$1.class
+³   ³   ³   ³       CredentialsFileHandler.class
+³   ³   ³   ³       CredentialsManager.class
+³   ³   ³   ³       
+³   ³   ³   ÃÄÄÄcustomer
+³   ³   ³   ³       Customer.class
+³   ³   ³   ³       CustomerController.class
+³   ³   ³   ³       CustomerFileHandler$1.class
+³   ³   ³   ³       CustomerFileHandler.class
+³   ³   ³   ³       CustomerManager.class
+³   ³   ³   ³       
+³   ³   ³   ÃÄÄÄemployee
+³   ³   ³   ³       Employee.class
+³   ³   ³   ³       EmployeeController.class
+³   ³   ³   ³       EmployeeFileHandler$1.class
+³   ³   ³   ³       EmployeeFileHandler.class
+³   ³   ³   ³       EmployeeManager.class
+³   ³   ³   ³       
+³   ³   ³   ÃÄÄÄinventory
+³   ³   ³   ³       InventoryController.class
+³   ³   ³   ³       InventoryFileHandler$1.class
+³   ³   ³   ³       InventoryFileHandler.class
+³   ³   ³   ³       InventoryManager.class
+³   ³   ³   ³       Product.class
+³   ³   ³   ³       
+³   ³   ³   ÃÄÄÄlog
+³   ³   ³   ³       Log.class
+³   ³   ³   ³       LogController.class
+³   ³   ³   ³       LogFileHandler$1.class
+³   ³   ³   ³       LogFileHandler.class
+³   ³   ³   ³       LogManager.class
+³   ³   ³   ³       
+³   ³   ³   ÀÄÄÄreport
+³   ³   ³           Report.class
+³   ³   ³           ReportController.class
+³   ³   ³           ReportFileHandler$1.class
+³   ³   ³           ReportFileHandler.class
+³   ³   ³           ReportManager.class
+³   ³   ³           
+³   ³   ÀÄÄÄutils
+³   ³           ChatManager.class
+³   ³           ChatSession.class
+³   ³           ClientInfo.class
+³   ³           FileHandler.class
+³   ³           RequestHandler.class
+³   ³           SessionManager.class
+³   ³           
+³   ÀÄÄÄshared
+³           ChatMessage.class
+³           Request.class
+³           Response.class
+³           
+ÃÄÄÄdata
+³       EILAT_credentials.json
+³       EILAT_customers.json
+³       EILAT_employees.json
+³       EILAT_inventory.json
+³       EILAT_logs.json
+³       EILAT_reports.json
+³       JERUSALEM_credentials.json
+³       JERUSALEM_customers.json
+³       JERUSALEM_employees.json
+³       JERUSALEM_inventory.json
+³       JERUSALEM_logs.json
+³       JERUSALEM_reports.json
+³       
+ÃÄÄÄlib
+³       gson-2.8.8.jar
+³       
+ÀÄÄÄsrc
+    ÃÄÄÄclient
+    ³   ³   Client.java
+    ³   ³   
+    ³   ÃÄÄÄcli
+    ³   ³       ChatUtils.java
+    ³   ³       CustomerScreen.java
+    ³   ³       EmployeeScreen.java
+    ³   ³       InventoryScreen.java
+    ³   ³       LoginScreen.java
+    ³   ³       ManagerScreen.java
+    ³   ³       RegisterUtils.java
+    ³   ³       ReportScreen.java
+    ³   ³       ScreensUtils.java
+    ³   ³       TransactionScreen.java
+    ³   ³       UserScreen.java
+    ³   ³       
+    ³   ÀÄÄÄutils
+    ³           ChatListener.java
+    ³           MessageDispatcher.java
+    ³           RequestSender.java
+    ³           
+    ÃÄÄÄserver
+    ³   ³   Server.java
+    ³   ³   
+    ³   ÃÄÄÄmodels
+    ³   ³   ÃÄÄÄcredentials
+    ³   ³   ³       CredentialController.java
+    ³   ³   ³       Credentials.java
+    ³   ³   ³       CredentialsFileHandler.java
+    ³   ³   ³       CredentialsManager.java
+    ³   ³   ³       
+    ³   ³   ÃÄÄÄcustomer
+    ³   ³   ³       Customer.java
+    ³   ³   ³       CustomerController.java
+    ³   ³   ³       CustomerFileHandler.java
+    ³   ³   ³       CustomerManager.java
+    ³   ³   ³       
+    ³   ³   ÃÄÄÄemployee
+    ³   ³   ³       Employee.java
+    ³   ³   ³       EmployeeController.java
+    ³   ³   ³       EmployeeFileHandler.java
+    ³   ³   ³       EmployeeManager.java
+    ³   ³   ³       
+    ³   ³   ÃÄÄÄinventory
+    ³   ³   ³       InventoryController.java
+    ³   ³   ³       InventoryFileHandler.java
+    ³   ³   ³       InventoryManager.java
+    ³   ³   ³       Product.java
+    ³   ³   ³       
+    ³   ³   ÃÄÄÄlog
+    ³   ³   ³       Log.java
+    ³   ³   ³       LogController.java
+    ³   ³   ³       LogFileHandler.java
+    ³   ³   ³       LogManager.java
+    ³   ³   ³       
+    ³   ³   ÀÄÄÄreport
+    ³   ³           Report.java
+    ³   ³           ReportController.java
+    ³   ³           ReportFileHandler.java
+    ³   ³           ReportManager.java
+    ³   ³           
+    ³   ÀÄÄÄutils
+    ³           ChatManager.java
+    ³           ChatSession.java
+    ³           ClientInfo.java
+    ³           FileHandler.java
+    ³           RequestHandler.java
+    ³           SessionManager.java
+    ³           
+    ÀÄÄÄshared
+            ChatMessage.java
+            Request.java
+            Response.java
+            

@@ -1,18 +1,4 @@
 {
-  "P008": {
-    "serialNum": "P008",
-    "name": "Kids\u0027 Winter Jacket",
-    "price": 95.99000000000001,
-    "quantity": 12,
-    "branch": "Jerusalem"
-  },
-  "P009": {
-    "serialNum": "P009",
-    "name": "Sports Backpack",
-    "price": 115.99,
-    "quantity": 18,
-    "branch": "Jerusalem"
-  },
   "P003": {
     "serialNum": "P003",
     "name": "Men\u0027s Hoodie",
@@ -46,6 +32,20 @@
     "name": "Women\u0027s High Heels",
     "price": 125.99,
     "quantity": 5,
+    "branch": "Jerusalem"
+  },
+  "P008": {
+    "serialNum": "P008",
+    "name": "Kids\u0027 Winter Jacket",
+    "price": 95.99000000000001,
+    "quantity": 12,
+    "branch": "Jerusalem"
+  },
+  "P009": {
+    "serialNum": "P009",
+    "name": "Sports Backpack",
+    "price": 115.99,
+    "quantity": 18,
     "branch": "Jerusalem"
   }
 }

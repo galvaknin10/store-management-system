@@ -1,21 +1,11 @@
 {
-  "27/12/2024": {
-    "branch": "Jerusalem",
-    "date": "27/12/2024",
-    "salesData": {
-      "OnePlus 11": 25,
-      "iPhone 14": 45,
-      "Samsung Galaxy S23": 35
-    },
-    "totalSales": 105
-  },
   "28/12/2024": {
     "branch": "Jerusalem",
     "date": "28/12/2024",
     "salesData": {
+      "Samsung Galaxy S23": 40,
       "OnePlus 11": 30,
-      "iPhone 14": 50,
-      "Samsung Galaxy S23": 40
+      "iPhone 14": 50
     },
     "totalSales": 120
   },
@@ -23,10 +13,20 @@
     "branch": "Jerusalem",
     "date": "29/12/2024",
     "salesData": {
+      "Samsung Galaxy S23": 45,
       "OnePlus 11": 35,
-      "iPhone 14": 55,
-      "Samsung Galaxy S23": 45
+      "iPhone 14": 55
     },
     "totalSales": 135
+  },
+  "27/12/2024": {
+    "branch": "Jerusalem",
+    "date": "27/12/2024",
+    "salesData": {
+      "Samsung Galaxy S23": 35,
+      "OnePlus 11": 25,
+      "iPhone 14": 45
+    },
+    "totalSales": 105
   }
 }

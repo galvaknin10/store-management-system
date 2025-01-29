@@ -40,7 +40,7 @@ public class LoginScreen {
                             continue; // If authentication fails, restart the loop
                         } else if (result == 2) {
                             // If the user chooses to log out
-                            ScreensUtils.logOut(sender, null);
+                            ScreensUtils.logOut(sender, userName);
                             System.out.println("Exiting the system, goodbye :)");
                             return null;
                         } else {
@@ -64,7 +64,7 @@ public class LoginScreen {
                             continue; // If authentication fails, restart the loop
                         } else if (result == 2) {
                             // If the user chooses to log out
-                            ScreensUtils.logOut(sender, null);
+                            ScreensUtils.logOut(sender, userName);
                             System.out.println("Exiting the system, goodbye :)");
                             return null;
                         } else {
